@@ -5,7 +5,7 @@ import os
 import parse_function
 
 
-class BaseAdapter():
+class BaseAdapter(object):
     def __init__(self, log_path):
         self.log_path = log_path
 

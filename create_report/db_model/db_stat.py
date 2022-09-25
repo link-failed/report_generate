@@ -1,17 +1,13 @@
 import psycopg2
+from sqlalchemy.exc import OperationalError
+from sqlalchemy.engine.base import Engine
 
 
-def get_postgres_index():
+def get_postgres_index(postgres_engine: Engine):
     # specify schema in 'options'
-    connection = psycopg2.connect(user="ceci",
-                                  password="mimic",
-                                  host="localhost",
-                                  port="5432",
-                                  database="mimic",
-                                  options="-c search_path=public")
+
     index_info_list = []
     try:
-        cursor = connection.cursor()
         index_info_query = """SELECT
                                         idstat.relname AS TABLE_NAME,
                                         pg_size_pretty(pg_relation_size(idstat.relid)) AS table_size,
@@ -40,7 +36,6 @@ def get_postgres_index():
                                         idstat.idx_scan DESC,
                                         pg_relation_size(indexrelid) DESC"""
 
-        cursor.execute(index_info_query)
         print("Selecting rows from mobile table using cursor.fetchall")
         mobile_records = cursor.fetchall()
 
