@@ -1,5 +1,6 @@
 import re
 
+
 def find_node(line):
     rule = r'\"node_info\": (.*?):'
     return re.search(rule, line)

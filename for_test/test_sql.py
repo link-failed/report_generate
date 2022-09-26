@@ -35,7 +35,7 @@ query_sql = """SELECT
 
 records = pd.read_sql(query_sql, engine)
 
-# print(records)
+print(type(records))
 # index_info_list = []
 #
 # for row in records.values:

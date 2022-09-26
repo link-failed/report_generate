@@ -1,0 +1,740 @@
+2022-07-15 17:22:35.136 CST,,,1099,,62d131db.44b,1,,2022-07-15 17:22:35 CST,,0,LOG,00000,"ending log output to stderr",,"Future log output will go to log destination ""csvlog"".",,,,,,,""
+2022-07-15 17:22:35.139 CST,,,1107,,62d131db.453,1,,2022-07-15 17:22:35 CST,,0,LOG,00000,"database system was shut down at 2022-07-15 17:22:02 CST",,,,,,,,,""
+2022-07-15 17:22:35.148 CST,,,1099,,62d131db.44b,2,,2022-07-15 17:22:35 CST,,0,LOG,00000,"database system is ready to accept connections",,,,,,,,,""
+2022-07-15 17:23:45.049 CST,"postgres","postgres",2554,"127.0.0.1:54202",62d13221.9fa,1,"BEGIN",2022-07-15 17:23:45 CST,3/88,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:23:45.079 CST,"postgres","postgres",2555,"127.0.0.1:54204",62d13221.9fb,1,"BEGIN",2022-07-15 17:23:45 CST,3/90,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:23:45.097 CST,"postgres","postgres",2555,"127.0.0.1:54204",62d13221.9fb,2,"BEGIN",2022-07-15 17:23:45 CST,3/91,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:23:45.151 CST,"postgres","postgres",2560,"127.0.0.1:54206",62d13221.a00,1,"BEGIN",2022-07-15 17:23:45 CST,3/93,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:18.375 CST,"postgres","postgres",2603,"127.0.0.1:54208",62d13242.a2b,1,"BEGIN",2022-07-15 17:24:18 CST,3/96,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:18.481 CST,"postgres","postgres",2605,"127.0.0.1:54210",62d13242.a2d,1,"BEGIN",2022-07-15 17:24:18 CST,3/99,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:18.713 CST,"postgres","postgres",2606,"127.0.0.1:54212",62d13242.a2e,1,"BEGIN",2022-07-15 17:24:18 CST,3/102,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:21.125 CST,"postgres","postgres",2639,"127.0.0.1:54214",62d13245.a4f,1,"BEGIN",2022-07-15 17:24:21 CST,3/105,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:21.273 CST,"postgres","postgres",2640,"127.0.0.1:54216",62d13245.a50,1,"BEGIN",2022-07-15 17:24:21 CST,3/108,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:21.388 CST,"postgres","postgres",2641,"127.0.0.1:54218",62d13245.a51,1,"BEGIN",2022-07-15 17:24:21 CST,3/111,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:21.461 CST,"postgres","postgres",2642,"127.0.0.1:54220",62d13245.a52,1,"BEGIN",2022-07-15 17:24:21 CST,3/114,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:21.662 CST,"postgres","postgres",2643,"127.0.0.1:54222",62d13245.a53,1,"BEGIN",2022-07-15 17:24:21 CST,3/117,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:21.851 CST,"postgres","postgres",2644,"127.0.0.1:54224",62d13245.a54,1,"BEGIN",2022-07-15 17:24:21 CST,3/120,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:21.980 CST,"postgres","postgres",2645,"127.0.0.1:54228",62d13245.a55,1,"BEGIN",2022-07-15 17:24:21 CST,3/123,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:22.137 CST,"postgres","postgres",2646,"127.0.0.1:54230",62d13246.a56,1,"BEGIN",2022-07-15 17:24:22 CST,3/126,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:24.412 CST,"postgres","postgres",2660,"127.0.0.1:54232",62d13248.a64,1,"BEGIN",2022-07-15 17:24:24 CST,3/129,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:24.481 CST,"postgres","postgres",2661,"127.0.0.1:54234",62d13248.a65,1,"BEGIN",2022-07-15 17:24:24 CST,3/132,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:28.128 CST,"postgres","postgres",2678,"127.0.0.1:54236",62d1324c.a76,1,"BEGIN",2022-07-15 17:24:28 CST,3/135,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:32.836 CST,"postgres","postgres",2703,"127.0.0.1:54240",62d13250.a8f,1,"BEGIN",2022-07-15 17:24:32 CST,3/138,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:33.261 CST,"postgres","postgres",2704,"127.0.0.1:54242",62d13251.a90,1,"BEGIN",2022-07-15 17:24:33 CST,3/141,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:36.999 CST,"postgres","postgres",2732,"127.0.0.1:54244",62d13254.aac,1,"BEGIN",2022-07-15 17:24:36 CST,3/144,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:38.955 CST,"postgres","postgres",2733,"127.0.0.1:54246",62d13256.aad,1,"BEGIN",2022-07-15 17:24:38 CST,3/147,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:39.021 CST,"postgres","postgres",2734,"127.0.0.1:54248",62d13257.aae,1,"BEGIN",2022-07-15 17:24:39 CST,3/150,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:40.527 CST,"postgres","postgres",2763,"127.0.0.1:54250",62d13258.acb,1,"BEGIN",2022-07-15 17:24:40 CST,3/153,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:41.052 CST,"postgres","postgres",2766,"127.0.0.1:54252",62d13259.ace,1,"BEGIN",2022-07-15 17:24:41 CST,3/156,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:42.945 CST,"postgres","postgres",2770,"127.0.0.1:54254",62d1325a.ad2,1,"BEGIN",2022-07-15 17:24:42 CST,3/159,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:44.523 CST,"postgres","postgres",2782,"127.0.0.1:54256",62d1325c.ade,1,"BEGIN",2022-07-15 17:24:44 CST,3/162,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:44.768 CST,"postgres","postgres",2783,"127.0.0.1:54258",62d1325c.adf,1,"BEGIN",2022-07-15 17:24:44 CST,3/165,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:47.939 CST,"postgres","postgres",2799,"127.0.0.1:54260",62d1325f.aef,1,"BEGIN",2022-07-15 17:24:47 CST,3/168,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:48.135 CST,"postgres","postgres",2800,"127.0.0.1:54262",62d13260.af0,1,"BEGIN",2022-07-15 17:24:48 CST,3/171,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:48.267 CST,"postgres","postgres",2801,"127.0.0.1:54264",62d13260.af1,1,"BEGIN",2022-07-15 17:24:48 CST,3/174,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:48.463 CST,"postgres","postgres",2802,"127.0.0.1:54266",62d13260.af2,1,"BEGIN",2022-07-15 17:24:48 CST,3/177,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:48.654 CST,"postgres","postgres",2803,"127.0.0.1:54268",62d13260.af3,1,"BEGIN",2022-07-15 17:24:48 CST,3/180,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:48.859 CST,"postgres","postgres",2804,"127.0.0.1:54270",62d13260.af4,1,"BEGIN",2022-07-15 17:24:48 CST,3/183,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:48.923 CST,"postgres","postgres",2805,"127.0.0.1:54272",62d13260.af5,1,"BEGIN",2022-07-15 17:24:48 CST,3/186,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:49.205 CST,"postgres","postgres",2806,"127.0.0.1:54274",62d13261.af6,1,"BEGIN",2022-07-15 17:24:49 CST,3/189,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:49.281 CST,"postgres","postgres",2809,"127.0.0.1:54276",62d13261.af9,1,"BEGIN",2022-07-15 17:24:49 CST,3/192,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:49.464 CST,"postgres","postgres",2821,"127.0.0.1:54278",62d13261.b05,1,"BEGIN",2022-07-15 17:24:49 CST,3/195,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:49.845 CST,"postgres","postgres",2822,"127.0.0.1:54280",62d13261.b06,1,"BEGIN",2022-07-15 17:24:49 CST,3/198,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:49.923 CST,"postgres","postgres",2825,"127.0.0.1:54282",62d13261.b09,1,"BEGIN",2022-07-15 17:24:49 CST,3/201,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:49.924 CST,"postgres","postgres",2825,"127.0.0.1:54282",62d13261.b09,2,"idle in transaction",2022-07-15 17:24:49 CST,3/201,0,ERROR,42601,"syntax error at or near ""DROP""",,,,,,"/* {""app"": ""dbt"", ""dbt_version"": ""1.1.1"", ""profile_name"": ""mimic"", ""target_name"": ""dev"", ""node_id"": ""model.mimic.icustay_days""} */
+
+
+  create  table ""postgres"".""public"".""icustay_days__dbt_tmp""
+  as (
+    -- ----------------------------------------------------------
+-- Create a table that counts each day spent in the ICU    --
+-- and assign a timestamp to the start and end of each day --
+-- ----------------------------------------------------------
+
+-- ----------
+-- Columns:
+-- ----------
+-- icustay_id
+-- intime
+-- outime
+-- icudayseq_asc:  Counting days since arrival in the ICU
+-- 				         0 = day of arrival in the ICU
+--                 1 = day 1 after arrival
+--                 2 = day 2 after arrival etc
+-- icudayseq_desc: Counting down to the day of discharge from the ICU
+--                 2 = day 2 before discharge etc
+--                 1 = day 1 before discharge
+-- 				         0 = day of discharge from the ICU
+-- startday: if day of arrival then intime, else midnight at start of day
+-- endday: if day of discharge then outtime, else midnight at end of day
+-- ----------
+
+DROP MATERIALIZED VIEW icustay_days;
+CREATE VIEW icustay_days AS
+WITH dayseq AS (
+	SELECT icustay_id, intime, outtime,
+       GENERATE_SERIES(0,CEIL(los)::INT-1,1) AS icudayseq_asc,
+       GENERATE_SERIES(CEIL(los)::INT-1,0,-1) AS icudayseq_desc
+	FROM icustays)
+SELECT icustay_id, intime, outtime,
+    icudayseq_asc, icudayseq_desc,
+    CASE WHEN icudayseq_asc = 0 THEN intime
+        ELSE DATETIME_ADD(date_trunc('day', intime), INTERVAL icudayseq_asc DAY)
+        END AS startday,
+    CASE WHEN icudayseq_desc = 0 THEN OUTTIME
+        ELSE DATETIME_ADD(date_trunc('day', intime), INTERVAL icudayseq_asc+1 DAY)
+				END AS endday
+FROM dayseq
+  );",1100,,"dbt"
+2022-07-15 17:24:49.949 CST,"postgres","postgres",2830,"127.0.0.1:54284",62d13261.b0e,1,"BEGIN",2022-07-15 17:24:49 CST,3/203,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:50.529 CST,"postgres","postgres",2840,"127.0.0.1:54286",62d13262.b18,1,"BEGIN",2022-07-15 17:24:50 CST,3/206,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:50.805 CST,"postgres","postgres",2841,"127.0.0.1:54288",62d13262.b19,1,"BEGIN",2022-07-15 17:24:50 CST,3/209,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:50.865 CST,"postgres","postgres",2842,"127.0.0.1:54292",62d13262.b1a,1,"BEGIN",2022-07-15 17:24:50 CST,3/212,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:51.498 CST,"postgres","postgres",2843,"127.0.0.1:54294",62d13263.b1b,1,"BEGIN",2022-07-15 17:24:51 CST,3/215,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:52.642 CST,"postgres","postgres",2844,"127.0.0.1:54296",62d13264.b1c,1,"BEGIN",2022-07-15 17:24:52 CST,3/218,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:53.506 CST,"postgres","postgres",2847,"127.0.0.1:54298",62d13265.b1f,1,"BEGIN",2022-07-15 17:24:53 CST,3/221,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:54.721 CST,"postgres","postgres",2859,"127.0.0.1:54300",62d13266.b2b,1,"BEGIN",2022-07-15 17:24:54 CST,3/224,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:54.939 CST,"postgres","postgres",2860,"127.0.0.1:54302",62d13266.b2c,1,"BEGIN",2022-07-15 17:24:54 CST,3/227,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:55.227 CST,"postgres","postgres",2867,"127.0.0.1:54304",62d13267.b33,1,"BEGIN",2022-07-15 17:24:55 CST,3/230,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:55.993 CST,"postgres","postgres",2877,"127.0.0.1:54306",62d13267.b3d,1,"BEGIN",2022-07-15 17:24:55 CST,3/233,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:59.541 CST,"postgres","postgres",2889,"127.0.0.1:54308",62d1326b.b49,1,"BEGIN",2022-07-15 17:24:59 CST,3/236,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:24:59.602 CST,"postgres","postgres",2890,"127.0.0.1:54310",62d1326b.b4a,1,"BEGIN",2022-07-15 17:24:59 CST,3/239,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:03.178 CST,"postgres","postgres",2911,"127.0.0.1:54312",62d1326f.b5f,1,"BEGIN",2022-07-15 17:25:03 CST,3/242,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:06.871 CST,"postgres","postgres",2937,"127.0.0.1:54314",62d13272.b79,1,"BEGIN",2022-07-15 17:25:06 CST,3/245,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:06.995 CST,"postgres","postgres",2938,"127.0.0.1:54316",62d13272.b7a,1,"BEGIN",2022-07-15 17:25:06 CST,3/248,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:07.056 CST,"postgres","postgres",2939,"127.0.0.1:54318",62d13273.b7b,1,"BEGIN",2022-07-15 17:25:07 CST,3/251,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:07.115 CST,"postgres","postgres",2940,"127.0.0.1:54320",62d13273.b7c,1,"BEGIN",2022-07-15 17:25:07 CST,3/254,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:09.757 CST,"postgres","postgres",2952,"127.0.0.1:54322",62d13275.b88,1,"BEGIN",2022-07-15 17:25:09 CST,3/257,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:09.816 CST,"postgres","postgres",2953,"127.0.0.1:54324",62d13275.b89,1,"BEGIN",2022-07-15 17:25:09 CST,3/260,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:09.991 CST,"postgres","postgres",2954,"127.0.0.1:54326",62d13275.b8a,1,"BEGIN",2022-07-15 17:25:09 CST,3/263,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:10.128 CST,"postgres","postgres",2961,"127.0.0.1:54328",62d13276.b91,1,"BEGIN",2022-07-15 17:25:10 CST,3/266,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:13.081 CST,"postgres","postgres",2969,"127.0.0.1:54332",62d13279.b99,1,"BEGIN",2022-07-15 17:25:13 CST,3/269,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:13.082 CST,"postgres","postgres",2969,"127.0.0.1:54332",62d13279.b99,2,"idle in transaction",2022-07-15 17:25:13 CST,3/269,0,ERROR,42601,"syntax error at or near ""﻿with""",,,,,,"/* {""app"": ""dbt"", ""dbt_version"": ""1.1.1"", ""profile_name"": ""mimic"", ""target_name"": ""dev"", ""node_id"": ""model.mimic.pivoted_sofa""} */
+
+
+  create  table ""postgres"".""public"".""pivoted_sofa__dbt_tmp""
+  as (
+    ﻿with co as
+(
+  select ih.icustay_id, ie.hadm_id
+  , hr
+  -- start/endtime can be used to filter to values within this hour
+  , DATETIME_SUB(ih.endtime, INTERVAL '1' HOUR) AS starttime
+  , ih.endtime
+  from icustay_hours ih
+  INNER JOIN icustays ie
+    ON ih.icustay_id = ie.icustay_id
+)
+-- get minimum blood pressure FROM chartevents
+, bp as
+(
+  select ce.icustay_id
+    , ce.charttime
+    , min(valuenum) as meanbp_min
+  FROM chartevents ce
+  -- exclude rows marked as error
+  where (ce.error IS NULL OR ce.error != 1)
+  and ce.itemid in
+  (
+  -- MEAN ARTERIAL PRESSURE
+  456, --""NBP Mean""
+  52, --""Arterial BP Mean""
+  6702, --	Arterial BP Mean #2
+  443, --	Manual BP Mean(calc)
+  220052, --""Arterial Blood Pressure mean""
+  220181, --""Non Invasive Blood Pressure mean""
+  225312  --""ART BP mean""
+  )
+  and valuenum > 0 and valuenum < 300
+  group by ce.icustay_id, ce.charttime
+)
+, pafi as
+(
+  -- join blood gas to ventilation durations to determine if patient was vent
+  select ie.icustay_id
+  , bg.charttime
+  -- because pafi has an interaction between vent/PaO2:FiO2, we need two columns for the score
+  -- it can happen that the lowest unventilated PaO2/FiO2 is 68, but the lowest ventilated PaO2/FiO2 is 120
+  -- in this case, the SOFA score is 3, *not* 4.
+  , case when vd.icustay_id is null then pao2fio2ratio else null end pao2fio2ratio_novent
+  , case when vd.icustay_id is not null then pao2fio2ratio else null end pao2fio2ratio_vent
+  FROM icustays ie
+  inner join pivoted_bg_art bg
+    on ie.icustay_id = bg.icustay_id
+  left join ventilation_durations vd
+    on ie.icustay_id = vd.icustay_id
+    and bg.charttime >= vd.starttime
+    and bg.charttime <= vd.endtime
+)
+, mini_agg as
+(
+  select co.icustay_id, co.hr
+  -- vitals
+  , min(bp.meanbp_min) as meanbp_min
+  -- gcs
+  , min(gcs.GCS) as GCS_min
+  -- labs
+  , max(labs.bilirubin) as bilirubin_max
+  , max(labs.creatinine) as creatinine_max
+  , min(labs.platelet) as platelet_min
+  -- because pafi has an interaction between vent/PaO2:FiO2, we need two columns for the score
+  -- it can happen that the lowest unventilated PaO2/FiO2 is 68, but the lowest ventilated PaO2/FiO2 is 120
+  -- in this case, the SOFA score is 3, *not* 4.
+  , min(case when vd.icustay_id is null then pao2fio2ratio else null end) AS pao2fio2ratio_novent
+  , min(case when vd.icustay_id is not null then pao2fio2ratio else null end) AS pao2fio2ratio_vent
+  from co
+  left join bp
+    on co.icustay_id = bp.icustay_id
+    and co.starttime < bp.charttime
+    and co.endtime >= bp.charttime
+  left join pivoted_gcs gcs
+    on co.icustay_id = gcs.icustay_id
+    and co.starttime < gcs.charttime
+    and co.endtime >= gcs.charttime
+  left join pivoted_lab labs
+    on co.hadm_id = labs.hadm_id
+    and co.starttime < labs.charttime
+    and co.endtime >= labs.charttime
+  -- bring in blood gases that occurred during this hour
+  left join pivoted_bg_art bg
+    on co.icustay_id = bg.icustay_id
+    and co.starttime < bg.charttime
+    and co.endtime >= bg.charttime
+  -- at the time of the blood gas, determine if patient was ventilated
+  left join ventilation_durations vd
+    on co.icustay_id = vd.icustay_id
+    and bg.charttime >= vd.starttime
+    and bg.charttime <= vd.endtime
+  group by co.icustay_id, co.hr
+)
+-- sum uo separately to prevent duplicating values
+, uo as
+(
+  select co.icustay_id, co.hr
+  -- uo
+  , sum(uo.urineoutput) as urineoutput
+  from co
+  left join pivoted_uo uo
+    on co.icustay_id = uo.icustay_id
+    and co.starttime < uo.charttime
+    and co.endtime >= uo.charttime
+  group by co.icustay_id, co.hr
+)
+, scorecomp as
+(
+  select
+      co.icustay_id
+    , co.hr
+    , co.starttime, co.endtime
+    , ma.pao2fio2ratio_novent
+    , ma.pao2fio2ratio_vent
+    , epi.vaso_rate as rate_epinephrine
+    , nor.vaso_rate as rate_norepinephrine
+    , dop.vaso_rate as rate_dopamine
+    , dob.vaso_rate as rate_dobutamine
+    , ma.meanbp_min
+    , ma.GCS_min
+    -- uo
+    , uo.urineoutput
+    -- labs
+    , ma.bilirubin_max
+    , ma.creatinine_max
+    , ma.platelet_min
+  from co
+  left join mini_agg ma
+    on co.icustay_id = ma.icustay_id
+    and co.hr = ma.hr
+  left join uo
+    on co.icustay_id = uo.icustay_id
+    and co.hr = uo.hr
+  left join pafi
+    on co.icustay_id = pafi.icustay_id
+    and co.starttime < pafi.charttime
+    and co.endtime  >= pafi.charttime
+  left join epinephrine_dose epi
+    on co.icustay_id = epi.icustay_id
+    and co.endtime > epi.starttime
+    and co.endtime <= epi.endtime
+  left join norepinephrine_dose nor
+    on co.icustay_id = nor.icustay_id
+    and co.endtime > nor.starttime
+    and co.endtime <= nor.endtime
+  left join dopamine_dose dop
+    on co.icustay_id = dop.icustay_id
+    and co.endtime > dop.starttime
+    and co.endtime <= dop.endtime
+  left join dobutamine_dose dob
+    on co.icustay_id = dob.icustay_id
+    and co.endtime > dob.starttime
+    and co.endtime <= dob.endtime
+)
+, scorecalc as
+(
+  -- Calculate the final score
+  -- note that if the underlying data is missing, the component is null
+  -- eventually these are treated as 0 (normal), but knowing when data is missing is useful for debugging
+  select scorecomp.*
+  -- Respiration
+  , cast(case
+      when pao2fio2ratio_vent   < 100 then 4
+      when pao2fio2ratio_vent   < 200 then 3
+      when pao2fio2ratio_novent < 300 then 2
+      when pao2fio2ratio_novent < 400 then 1
+      when coalesce(pao2fio2ratio_vent, pao2fio2ratio_novent) is null then null
+      else 0
+    end as SMALLINT) as respiration
+
+  -- Coagulation
+  , cast(case
+      when platelet_min < 20  then 4
+      when platelet_min < 50  then 3
+      when platelet_min < 100 then 2
+      when platelet_min < 150 then 1
+      when platelet_min is null then null
+      else 0
+    end as SMALLINT) as coagulation
+
+  -- Liver
+  , cast(case
+      -- Bilirubin checks in mg/dL
+        when Bilirubin_Max >= 12.0 then 4
+        when Bilirubin_Max >= 6.0  then 3
+        when Bilirubin_Max >= 2.0  then 2
+        when Bilirubin_Max >= 1.2  then 1
+        when Bilirubin_Max is null then null
+        else 0
+      end as SMALLINT) as liver
+
+  -- Cardiovascular
+  , cast(case
+      when rate_dopamine > 15 or rate_epinephrine >  0.1 or rate_norepinephrine >  0.1 then 4
+      when rate_dopamine >  5 or rate_epinephrine <= 0.1 or rate_norepinephrine <= 0.1 then 3
+      when rate_dopamine >  0 or rate_dobutamine > 0 then 2
+      when meanbp_min < 70 then 1
+      when coalesce(meanbp_min, rate_dopamine, rate_dobutamine, rate_epinephrine, rate_norepinephrine) is null then null
+      else 0
+    end as SMALLINT) as cardiovascular
+
+  -- Neurological failure (GCS)
+  , cast(case
+      when (GCS_min >= 13 and GCS_min <= 14) then 1
+      when (GCS_min >= 10 and GCS_min <= 12) then 2
+      when (GCS_min >=  6 and GCS_min <=  9) then 3
+      when  GCS_min <   6 then 4
+      when  GCS_min is null then null
+  else 0 end as SMALLINT)
+    as cns
+
+  -- Renal failure - high creatinine or low urine output
+  , cast(case
+    when (Creatinine_Max >= 5.0) then 4
+    when
+      SUM(urineoutput) OVER W < 200
+        then 4
+    when (Creatinine_Max >= 3.5 and Creatinine_Max < 5.0) then 3
+    when
+      SUM(urineoutput) OVER W < 500
+        then 3
+    when (Creatinine_Max >= 2.0 and Creatinine_Max < 3.5) then 2
+    when (Creatinine_Max >= 1.2 and Creatinine_Max < 2.0) then 1
+    when coalesce
+      (
+        SUM(urineoutput) OVER W
+        , Creatinine_Max
+      ) is null then null
+  else 0 end as SMALLINT)
+    as renal
+  from scorecomp
+  WINDOW W as
+  (
+    PARTITION BY icustay_id
+    ORDER BY hr
+    ROWS BETWEEN 23 PRECEDING AND 0 FOLLOWING
+  )
+)
+, score_final as
+(
+  select s.*
+    -- Combine all the scores to get SOFA
+    -- Impute 0 if the score is missing
+   -- the window function takes the max over the last 24 hours
+    , cast(coalesce(
+        MAX(respiration) OVER (PARTITION BY icustay_id ORDER BY HR
+        ROWS BETWEEN 24 PRECEDING AND 0 FOLLOWING)
+      ,0) as SMALLINT) as respiration_24hours
+     , cast(coalesce(
+         MAX(coagulation) OVER (PARTITION BY icustay_id ORDER BY HR
+         ROWS BETWEEN 24 PRECEDING AND 0 FOLLOWING)
+        ,0) as SMALLINT) as coagulation_24hours
+    , cast(coalesce(
+        MAX(liver) OVER (PARTITION BY icustay_id ORDER BY HR
+        ROWS BETWEEN 24 PRECEDING AND 0 FOLLOWING)
+      ,0) as SMALLINT) as liver_24hours
+    , cast(coalesce(
+        MAX(cardiovascular) OVER (PARTITION BY icustay_id ORDER BY HR
+        ROWS BETWEEN 24 PRECEDING AND 0 FOLLOWING)
+      ,0) as SMALLINT) as cardiovascular_24hours
+    , cast(coalesce(
+        MAX(cns) OVER (PARTITION BY icustay_id ORDER BY HR
+        ROWS BETWEEN 24 PRECEDING AND 0 FOLLOWING)
+      ,0) as SMALLINT) as cns_24hours
+    , cast(coalesce(
+        MAX(renal) OVER (PARTITION BY icustay_id ORDER BY HR
+        ROWS BETWEEN 24 PRECEDING AND 0 FOLLOWING)
+      ,0) as SMALLINT) as renal_24hours
+
+    -- sum together data for final SOFA
+    , coalesce(
+        MAX(respiration) OVER (PARTITION BY icustay_id ORDER BY HR
+        ROWS BETWEEN 24 PRECEDING AND 0 FOLLOWING)
+      ,0)
+     + coalesce(
+         MAX(coagulation) OVER (PARTITION BY icustay_id ORDER BY HR
+         ROWS BETWEEN 24 PRECEDING AND 0 FOLLOWING)
+      ,0)
+     + coalesce(
+        MAX(liver) OVER (PARTITION BY icustay_id ORDER BY HR
+        ROWS BETWEEN 24 PRECEDING AND 0 FOLLOWING)
+      ,0)
+     + coalesce(
+        MAX(cardiovascular) OVER (PARTITION BY icustay_id ORDER BY HR
+        ROWS BETWEEN 24 PRECEDING AND 0 FOLLOWING)
+      ,0)
+     + coalesce(
+        MAX(cns) OVER (PARTITION BY icustay_id ORDER BY HR
+        ROWS BETWEEN 24 PRECEDING AND 0 FOLLOWING)
+      ,0)
+     + cast(coalesce(
+        MAX(renal) OVER (PARTITION BY icustay_id ORDER BY HR
+        ROWS BETWEEN 24 PRECEDING AND 0 FOLLOWING)
+      ,0) as SMALLINT)
+    as sofa_24hours
+  from scorecalc s
+  WINDOW W as
+  (
+    PARTITION BY icustay_id
+    ORDER BY hr
+    ROWS BETWEEN 23 PRECEDING AND 0 FOLLOWING
+  )
+)
+select * from score_final
+where hr >= 0
+order by icustay_id, hr
+  );",205,,"dbt"
+2022-07-15 17:25:13.108 CST,"postgres","postgres",2971,"127.0.0.1:54334",62d13279.b9b,1,"BEGIN",2022-07-15 17:25:13 CST,3/271,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:16.303 CST,"postgres","postgres",2998,"127.0.0.1:54336",62d1327c.bb6,1,"BEGIN",2022-07-15 17:25:16 CST,3/274,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:16.371 CST,"postgres","postgres",2999,"127.0.0.1:54338",62d1327c.bb7,1,"BEGIN",2022-07-15 17:25:16 CST,3/277,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:16.570 CST,"postgres","postgres",3000,"127.0.0.1:54340",62d1327c.bb8,1,"BEGIN",2022-07-15 17:25:16 CST,3/280,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:17.713 CST,"postgres","postgres",3001,"127.0.0.1:54342",62d1327d.bb9,1,"BEGIN",2022-07-15 17:25:17 CST,3/283,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:17.911 CST,"postgres","postgres",3002,"127.0.0.1:54344",62d1327d.bba,1,"BEGIN",2022-07-15 17:25:17 CST,3/286,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:19.774 CST,"postgres","postgres",3014,"127.0.0.1:54346",62d1327f.bc6,1,"BEGIN",2022-07-15 17:25:19 CST,3/289,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:19.976 CST,"postgres","postgres",3015,"127.0.0.1:54348",62d1327f.bc7,1,"BEGIN",2022-07-15 17:25:19 CST,3/292,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:20.164 CST,"postgres","postgres",3022,"127.0.0.1:54350",62d13280.bce,1,"BEGIN",2022-07-15 17:25:20 CST,3/295,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:20.370 CST,"postgres","postgres",3023,"127.0.0.1:54352",62d13280.bcf,1,"BEGIN",2022-07-15 17:25:20 CST,3/298,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:23.397 CST,"postgres","postgres",3031,"127.0.0.1:54356",62d13283.bd7,1,"BEGIN",2022-07-15 17:25:23 CST,3/301,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:26.256 CST,"postgres","postgres",3058,"127.0.0.1:54358",62d13286.bf2,1,"BEGIN",2022-07-15 17:25:26 CST,3/304,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:29.338 CST,"postgres","postgres",3059,"127.0.0.1:54360",62d13289.bf3,1,"BEGIN",2022-07-15 17:25:29 CST,3/307,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:31.099 CST,"postgres","postgres",3086,"127.0.0.1:54362",62d1328b.c0e,1,"BEGIN",2022-07-15 17:25:31 CST,3/310,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:32.850 CST,"postgres","postgres",3087,"127.0.0.1:54364",62d1328c.c0f,1,"BEGIN",2022-07-15 17:25:32 CST,3/313,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:41.377 CST,"postgres","postgres",3113,"127.0.0.1:54366",62d13295.c29,1,"BEGIN",2022-07-15 17:25:41 CST,3/316,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:41.464 CST,"postgres","postgres",3114,"127.0.0.1:54368",62d13295.c2a,1,"BEGIN",2022-07-15 17:25:41 CST,3/319,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:41.550 CST,"postgres","postgres",3115,"127.0.0.1:54370",62d13295.c2b,1,"BEGIN",2022-07-15 17:25:41 CST,3/322,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:41.749 CST,"postgres","postgres",3116,"127.0.0.1:54372",62d13295.c2c,1,"BEGIN",2022-07-15 17:25:41 CST,3/325,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:51.427 CST,"postgres","postgres",3159,"127.0.0.1:54374",62d1329f.c57,1,"BEGIN",2022-07-15 17:25:51 CST,3/328,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:51.487 CST,"postgres","postgres",3160,"127.0.0.1:54376",62d1329f.c58,1,"BEGIN",2022-07-15 17:25:51 CST,3/331,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:51.639 CST,"postgres","postgres",3161,"127.0.0.1:54378",62d1329f.c59,1,"BEGIN",2022-07-15 17:25:51 CST,3/334,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:51.688 CST,"postgres","postgres",3162,"127.0.0.1:54380",62d1329f.c5a,1,"BEGIN",2022-07-15 17:25:51 CST,3/337,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:51.846 CST,"postgres","postgres",3163,"127.0.0.1:54382",62d1329f.c5b,1,"BEGIN",2022-07-15 17:25:51 CST,3/340,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:51.951 CST,"postgres","postgres",3165,"127.0.0.1:54384",62d1329f.c5d,1,"BEGIN",2022-07-15 17:25:51 CST,3/343,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:54.827 CST,"postgres","postgres",3204,"127.0.0.1:54386",62d132a2.c84,1,"BEGIN",2022-07-15 17:25:54 CST,3/346,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:55.324 CST,"postgres","postgres",3208,"127.0.0.1:54388",62d132a3.c88,1,"BEGIN",2022-07-15 17:25:55 CST,3/349,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:55.612 CST,"postgres","postgres",3210,"127.0.0.1:54390",62d132a3.c8a,1,"BEGIN",2022-07-15 17:25:55 CST,3/352,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:55.659 CST,"postgres","postgres",3211,"127.0.0.1:54392",62d132a3.c8b,1,"BEGIN",2022-07-15 17:25:55 CST,3/355,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:55.661 CST,"postgres","postgres",3211,"127.0.0.1:54392",62d132a3.c8b,2,"CREATE TABLE AS",2022-07-15 17:25:55 CST,3/355,0,ERROR,42P01,"relation ""ventilation_durations"" does not exist",,,,,,"/* {""app"": ""dbt"", ""dbt_version"": ""1.1.1"", ""profile_name"": ""mimic"", ""target_name"": ""dev"", ""node_id"": ""model.mimic.pivoted_oasis""} */
+
+
+  create  table ""postgres"".""public"".""pivoted_oasis__dbt_tmp""
+  as (
+    -- ------------------------------------------------------------------
+-- Title: Oxford Acute Severity of Illness Score (OASIS)
+-- This query extracts the Oxford acute severity of illness score.
+-- This score is a measure of severity of illness for patients in the ICU.
+-- The score is calculated for every hour of the patient's ICU stay.
+-- However, as the calculation window is 24 hours, care should be taken when
+-- using the score before the end of the first day.
+-- ------------------------------------------------------------------
+
+-- Reference for OASIS:
+--    Johnson, Alistair EW, Andrew A. Kramer, and Gari D. Clifford.
+--    ""A new severity of illness scale using a subset of acute physiology and chronic health evaluation data elements shows comparable predictive accuracy*.""
+--    Critical care medicine 41, no. 7 (2013): 1711-1718.
+
+-- Variables used in OASIS:
+--  Heart rate, GCS, MAP, Temperature, Respiratory rate, Ventilation status (sourced from CHARTEVENTS)
+--  Urine output (sourced from OUTPUTEVENTS)
+--  Elective surgery (sourced from ADMISSIONS and SERVICES)
+--  Pre-ICU in-hospital length of stay (sourced from ADMISSIONS and ICUSTAYS)
+--  Age (sourced from PATIENTS)
+
+-- The following views are required to run this query:
+--  1) uofirstday - generated by urine-output-first-day.sql
+--  2) ventfirstday - generated by ventilated-first-day.sql
+--  3) vitalsfirstday - generated by vitals-first-day.sql
+--  4) gcsfirstday - generated by gcs-first-day.sql
+
+
+-- Regarding missing values:
+--  The ventilation flag is always 0/1. It cannot be missing, since VENT=0 if no data is found for vent settings.
+
+-- Note:
+--  The score is calculated for *all* ICU patients, with the assumption
+--  that the user will subselect appropriate ICUSTAY_IDs.
+--  For example, the score is calculated for neonates, but it is likely inappropriate to
+--  actually use the score values for these patients.
+
+-- The following views required to run this query:
+--  1) pivoted_uo - generated by pivoted-uo.sql
+--  2) pivoted_lab - generated by pivoted-lab.sql
+--  3) pivoted_gcs - generated by pivoted-gcs.sql
+--  4) pivoted_vital - generated by pivoted-vital.sql
+--  5) ventilation_durations - generated by ../durations/ventilation_durations.sql
+
+-- generate a row for every hour the patient was in the ICU
+WITH co_hours AS
+(
+  select ih.icustay_id, ie.hadm_id
+  , hr
+  -- start/endtime can be used to filter to values within this hour
+  , DATETIME_SUB(ih.endtime, INTERVAL '1' HOUR) AS starttime
+  , ih.endtime
+  from icustay_hours ih
+  INNER JOIN icustays ie
+    ON ih.icustay_id = ie.icustay_id
+)
+, mini_agg as
+(
+  select co.icustay_id, co.hr
+  -- vitals
+  , min(v.HeartRate) as HeartRate_min
+  , max(v.HeartRate) as HeartRate_max
+  , min(v.TempC) as TempC_min
+  , max(v.TempC) as TempC_max
+  , min(v.MeanBP) as MeanBP_min
+  , max(v.MeanBP) as MeanBP_max
+  , min(v.RespRate) as RespRate_min
+  , max(v.RespRate) as RespRate_max
+  -- gcs
+  , min(gcs.GCS) as GCS_min
+  -- because pafi has an interaction between vent/PaO2:FiO2, we need two columns for the score
+  -- it can happen that the lowest unventilated PaO2/FiO2 is 68, but the lowest ventilated PaO2/FiO2 is 120
+  -- in this case, the SOFA score is 3, *not* 4.
+  , MAX(case
+        when vd1.icustay_id is not null then 1
+        when vd2.icustay_id is not null then 1
+    else 0 end) AS mechvent
+  from co_hours co
+  left join ""postgres"".""public"".""pivoted_vital"" v
+    on co.icustay_id = v.icustay_id
+    and co.starttime < v.charttime
+    and co.endtime >= v.charttime
+  left join pivoted_gcs gcs
+    on co.icustay_id = gcs.icustay_id
+    and co.starttime < gcs.charttime
+    and co.endtime >= gcs.charttime
+  -- at the time of this row, was the patient ventilated
+  left join ventilation_durations vd1
+    on co.icustay_id = vd1.icustay_id
+    and co.starttime >= vd1.starttime
+    and co.starttime <= vd1.endtime
+  left join ventilation_durations vd2
+    on co.icustay_id = vd2.icustay_id
+    and co.endtime >= vd2.starttime
+    and co.endtime <= vd2.endtime
+  group by co.icustay_id, co.hr
+)
+-- sum uo separately to prevent duplicating values
+, uo as
+(
+  select co.icustay_id, co.hr
+  -- uo
+  , sum(uo.urineoutput) as urineoutput
+  from co_hours co
+  left join pivoted_uo uo
+    on co.icustay_id = uo.icustay_id
+    and co.starttime < uo.charttime
+    and co.endtime >= uo.charttime
+  group by co.icustay_id, co.hr
+)
+, scorecomp as
+(
+  select
+      co.icustay_id
+    , co.hr
+    , co.starttime, co.endtime
+    , ma.meanbp_min
+    , ma.meanbp_max
+    , ma.heartrate_min
+    , ma.heartrate_max
+    , ma.tempc_min
+    , ma.tempc_max
+    , ma.resprate_min
+    , ma.resprate_max
+    , ma.gcs_min
+    -- uo
+    , uo.urineoutput
+    -- static variables that do not change over the ICU stay
+    , cast(co.intime as timestamp) - cast(adm.admittime as timestamp) as preiculos
+    , case
+        when adm.ADMISSION_TYPE = 'ELECTIVE' and sf.surgical = 1
+        then 1
+        when adm.ADMISSION_TYPE is null or sf.surgical is null
+        then null
+        else 0
+    end as electivesurgery
+  from co_hours co
+  inner join admissions adm
+    on co.hadm_id = adm.hadm_id
+  left join surgflag sf
+    on co.icustay_id = sf.icustay_id
+  left join mini_agg ma
+    on co.icustay_id = ma.icustay_id
+    and co.hr = ma.hr
+  left join uo
+    on co.icustay_id = uo.icustay_id
+    and co.hr = uo.hr
+)
+, scorecalc as
+(
+  -- Calculate the final score
+  -- note that if the underlying data is missing, the component is null
+  -- eventually these are treated as 0 (normal), but knowing when data is missing is useful for debugging
+  select scorecomp.*
+    -- Below code calculates the component scores needed for OASIS
+    , case when preiculos is null then null
+        when preiculos < '0 0:10:12' then 5
+        when preiculos < '0 4:57:00' then 3
+        when preiculos < '1 0:00:00' then 0
+        when preiculos < '12 23:48:00' then 1
+        else 2 end as preiculos_score
+    ,  case when age is null then null
+        when age < 24 then 0
+        when age <= 53 then 3
+        when age <= 77 then 6
+        when age <= 89 then 9
+        when age >= 90 then 7
+        else 0 end as age_score
+    ,  case when mingcs is null then null
+        when mingcs <= 7 then 10
+        when mingcs < 14 then 4
+        when mingcs = 14 then 3
+        else 0 end as gcs_score
+    ,  case when heartrate_max is null then null
+        when heartrate_max > 125 then 6
+        when heartrate_min < 33 then 4
+        when heartrate_max >= 107 and heartrate_max <= 125 then 3
+        when heartrate_max >= 89 and heartrate_max <= 106 then 1
+        else 0 end as heartrate_score
+    ,  case when meanbp_min is null then null
+        when meanbp_min < 20.65 then 4
+        when meanbp_min < 51 then 3
+        when meanbp_max > 143.44 then 3
+        when meanbp_min >= 51 and meanbp_min < 61.33 then 2
+        else 0 end as meanbp_score
+    ,  case when resprate_min is null then null
+        when resprate_min <   6 then 10
+        when resprate_max >  44 then  9
+        when resprate_max >  30 then  6
+        when resprate_max >  22 then  1
+        when resprate_min <  13 then 1 else 0
+        end as resprate_score
+    ,  case when tempc_max is null then null
+        when tempc_max > 39.88 then 6
+        when tempc_min >= 33.22 and tempc_min <= 35.93 then 4
+        when tempc_max >= 33.22 and tempc_max <= 35.93 then 4
+        when tempc_min < 33.22 then 3
+        when tempc_min > 35.93 and tempc_min <= 36.39 then 2
+        when tempc_max >= 36.89 and tempc_max <= 39.88 then 2
+        else 0 end as temp_score
+    ,  case
+        when SUM(urineoutput) OVER W is null then null
+        when SUM(urineoutput) OVER W < 671.09 then 10
+        when SUM(urineoutput) OVER W > 6896.80 then 8
+        when SUM(urineoutput) OVER W >= 671.09
+        and SUM(urineoutput) OVER W <= 1426.99 then 5
+        when SUM(urineoutput) OVER W >= 1427.00
+        and SUM(urineoutput) OVER W <= 2544.14 then 1
+        else 0 end as urineoutput_score
+    ,  case when mechvent is null then null
+        when mechvent = 1 then 9
+        else 0 end as mechvent_score
+    ,  case when electivesurgery is null then null
+        when electivesurgery = 1 then 0
+        else 6 end as electivesurgery_score
+  from scorecomp
+  WINDOW W as
+  (
+    PARTITION BY icustay_id
+    ORDER BY hr
+    ROWS BETWEEN 23 PRECEDING AND 0 FOLLOWING
+  )
+)
+, score_final as
+(
+  select s.*
+    -- Look for the worst instantaneous score over the last 24 hours
+    -- Impute 0 if the score is missing
+    , preiculos_score AS preiculos_score_24hours
+    , electivesurgery_score as electivesurgery_score_24hours
+    , coalesce(MAX(age_score) OVER W, 0)::SMALLINT as age_score_24hours
+    , coalesce(MAX(gcs_score) OVER W, 0)::SMALLINT as gcs_score_24hours
+    , coalesce(MAX(heartrate_score) OVER W, 0)::SMALLINT as heartrate_score_24hours
+    , coalesce(MAX(meanbp_score) OVER W,0)::SMALLINT as meanbp_score_24hours
+    , coalesce(MAX(resprate_score) OVER W,0)::SMALLINT as resprate_score_24hours
+    , coalesce(MAX(temp_score) OVER W,0)::SMALLINT as temp_score_24hours
+    , coalesce(MAX(urineoutput_score) OVER W,0)::SMALLINT as urineoutput_score_24hours
+    , coalesce(MAX(mechvent_score) OVER W,0)::SMALLINT as mechvent_score_24hours
+
+    -- sum together data for final OASIS
+    , (preiculos_score
+    + electivesurgery_score
+    + coalesce(MAX(age_score) OVER W, 0)
+    + coalesce(MAX(gcs_score) OVER W, 0)
+    + coalesce(MAX(heartrate_score) OVER W, 0)
+    + coalesce(MAX(meanbp_score) OVER W,0)
+    + coalesce(MAX(resprate_score) OVER W,0)
+    + coalesce(MAX(temp_score) OVER W,0)
+    + coalesce(MAX(urineoutput_score) OVER W,0)
+    + coalesce(MAX(mechvent_score) OVER W,0)
+    )::SMALLINT
+    as OASIS_24hours
+  from scorecalc s
+  WINDOW W as
+  (
+    PARTITION BY icustay_id
+    ORDER BY hr
+    ROWS BETWEEN 23 PRECEDING AND 0 FOLLOWING
+  )
+)
+select * from score_final
+where hr >= 0
+order by icustay_id, hr
+  );",3943,,"dbt"
+2022-07-15 17:25:55.685 CST,"postgres","postgres",3212,"127.0.0.1:54394",62d132a3.c8c,1,"BEGIN",2022-07-15 17:25:55 CST,3/357,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:55.760 CST,"postgres","postgres",3213,"127.0.0.1:54398",62d132a3.c8d,1,"BEGIN",2022-07-15 17:25:55 CST,3/360,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:55.926 CST,"postgres","postgres",3214,"127.0.0.1:54400",62d132a3.c8e,1,"BEGIN",2022-07-15 17:25:55 CST,3/363,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:56.108 CST,"postgres","postgres",3215,"127.0.0.1:54402",62d132a4.c8f,1,"BEGIN",2022-07-15 17:25:56 CST,3/366,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:56.841 CST,"postgres","postgres",3217,"127.0.0.1:54404",62d132a4.c91,1,"BEGIN",2022-07-15 17:25:56 CST,3/369,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:25:56.970 CST,"postgres","postgres",3218,"127.0.0.1:54406",62d132a4.c92,1,"BEGIN",2022-07-15 17:25:56 CST,3/372,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:32:24.698 CST,"postgres","postgres",3374,"127.0.0.1:54408",62d13428.d2e,1,"BEGIN",2022-07-15 17:32:24 CST,3/375,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:32:28.654 CST,"postgres","postgres",3419,"127.0.0.1:54410",62d1342c.d5b,1,"BEGIN",2022-07-15 17:32:28 CST,3/378,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:32:28.962 CST,"postgres","postgres",3420,"127.0.0.1:54412",62d1342c.d5c,1,"BEGIN",2022-07-15 17:32:28 CST,3/381,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:32:29.237 CST,"postgres","postgres",3421,"127.0.0.1:54414",62d1342d.d5d,1,"BEGIN",2022-07-15 17:32:29 CST,3/384,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:32:30.951 CST,"postgres","postgres",3439,"127.0.0.1:54418",62d1342e.d6f,1,"BEGIN",2022-07-15 17:32:30 CST,3/387,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:32:34.635 CST,"postgres","postgres",3447,"127.0.0.1:54420",62d13432.d77,1,"BEGIN",2022-07-15 17:32:34 CST,3/390,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:32:34.783 CST,"postgres","postgres",3448,"127.0.0.1:54422",62d13432.d78,1,"BEGIN",2022-07-15 17:32:34 CST,3/393,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:32:42.618 CST,"postgres","postgres",3494,"127.0.0.1:54424",62d1343a.da6,1,"BEGIN",2022-07-15 17:32:42 CST,3/396,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:32:46.443 CST,"postgres","postgres",3512,"127.0.0.1:54426",62d1343e.db8,1,"BEGIN",2022-07-15 17:32:46 CST,3/399,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:32:47.533 CST,"postgres","postgres",3520,"127.0.0.1:54428",62d1343f.dc0,1,"BEGIN",2022-07-15 17:32:47 CST,3/402,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:32:48.080 CST,"postgres","postgres",3521,"127.0.0.1:54432",62d13440.dc1,1,"BEGIN",2022-07-15 17:32:48 CST,3/405,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:32:48.717 CST,"postgres","postgres",3523,"127.0.0.1:54434",62d13440.dc3,1,"BEGIN",2022-07-15 17:32:48 CST,3/408,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"
+2022-07-15 17:32:49.374 CST,"postgres","postgres",3529,"127.0.0.1:54436",62d13441.dc9,1,"BEGIN",2022-07-15 17:32:49 CST,3/411,0,WARNING,25001,"there is already a transaction in progress",,,,,,,,,"dbt"

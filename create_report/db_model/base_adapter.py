@@ -23,7 +23,7 @@ class JsonAdapter(BaseAdapter):
 
     def current_queries_info(self, log_path):
         self.log_path = log_path
-        res_path = '../res/'
+        res_path = '../temp_files'
         res_name = 'all_dbt_log.csv'
 
         csv_header = ["node_name", "execution_time", "node_started_at", "node_finished_at", "node_status", "dbt_pid",
@@ -77,8 +77,9 @@ class JsonAdapter(BaseAdapter):
                             writer.writerow(this_row)
 
     def history_queries_info(self, log_path):
-        self.log_path = log_path
-        # log_path = '../logs_example/'
+        # TODO
+        # self.log_path = log_path
+        self.log_path = '../temp_files/logs_example/'
         res_path = '../res/'
         res_name = 'all_dbt_log.csv'
 
