@@ -5,6 +5,13 @@ import os
 import parse_function
 
 
+"""
+    metadata format:
+    current_info
+    history_info
+"""
+
+
 class BaseAdapter(object):
     def __init__(self, log_path):
         self.log_path = log_path
@@ -13,11 +20,7 @@ class BaseAdapter(object):
     #     return metadata
 
 
-# class TxtAdapter(BaseAdapter):
-#     def __init__(self, log_path):
-#         self.log_path = log_path
-
-class JsonAdapter(BaseAdapter):
+class DbtJsonAdapter(BaseAdapter):
     def __init__(self, log_path):
         self.log_path = log_path
 
@@ -134,6 +137,15 @@ class JsonAdapter(BaseAdapter):
                             writer.writerow(this_row)
 
 
-class TxtAdapter(BaseAdapter):
-    def __init(self, log_path):
+class DbtTxtAdapter(BaseAdapter):
+    def __init__(self, log_path):
         self.log_path = log_path
+
+# query: column 20
+# https://www.postgresql.org/docs/current/runtime-config-logging.html
+# write the csv and return nothing
+class PgCsvAdapter(BaseAdapter):
+    def __init__(self, log_path):
+        self.log_path = log_path
+
+    def get

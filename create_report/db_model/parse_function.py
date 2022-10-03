@@ -1,6 +1,15 @@
 import re
 
 
+# log format: {query_name : {start_time: duration}}
+def get_all_query_names(history_duration: str) -> list[str]:
+    query_names = []
+    with open(history_duration, "r") as f:
+        for i in f:
+            query_names.append(i)
+    return query_names
+
+
 def find_node(line):
     rule = r'\"node_info\": (.*?):'
     return re.search(rule, line)

@@ -7,6 +7,8 @@ from bokeh.plotting import figure, show
 cats = list("abcdef")
 yy = np.random.randn(2000)
 g = np.random.choice(cats, 2000)
+print(yy)
+print(g)
 for i, l in enumerate(cats):
     yy[g == l] += i // 2
 df = pd.DataFrame(dict(score=yy, group=g))
