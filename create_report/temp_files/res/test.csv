@@ -1,0 +1,13 @@
+query_name,execution_time,query_started_at,query_finished_at,query_status,dbt_pid,thread_name
+kdigo_creatinine,0.142,2022-07-29 15:56:27 PDT,,error,63727,
+kdigo_uo,0.142,2022-07-29 15:56:28 PDT,2022-07-29 16:00:30.086 PDT,success,63741,
+blood_gas_first_day,0.142,2022-07-29 16:00:30 PDT,,error,64581,
+gcs_first_day,0.142,2022-07-29 16:00:30 PDT,,error,64583,
+height_first_day,0.142,2022-07-29 16:00:30 PDT,,error,64584,
+labs_first_day,0.142,2022-07-29 16:00:30 PDT,,error,64585,
+rrt_first_day,0.142,2022-07-29 16:00:32 PDT,,error,64605,
+urine_output_first_day,0.142,2022-07-29 16:00:34 PDT,,error,64615,
+ventilation_first_day,0.142,2022-07-29 16:00:38 PDT,,error,64637,
+vitals_first_day,0.142,2022-07-29 16:00:38 PDT,,error,64646,
+weight_first_day,0.142,2022-07-29 16:00:38 PDT,,error,64647,
+blood_gas_first_day_arterial,0.142,2022-07-29 16:00:38 PDT,,error,64648,
