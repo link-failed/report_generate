@@ -56,13 +56,17 @@ with open("../create_report/temp_files/logs_example/pg-29.csv", "r") as f:
 
         # calculate query duration
         for index in query_info:
+            query_name = query_info[index]["query_name"]
             # find next query index
             temp = list(query_info)
-            next_index = temp[min(temp.index(index) + 1, len(temp) - 1)]
-            next_index = min(next_index, last_index)
-            query_name = query_info[index]["query_name"]
+            # in case it's the last line
+            next_index = min(index + 1, last_index)
+            for i in range(min(index + 1, last_index), last_index + 1):
+                if i in query_info.keys() and query_info[i]["query_name"] != query_name:
+                    next_index = i
+                    break
             to_record_flag = False
-            print(str(index) + "  " + str(next_index))
+            # print(str(index) + "  " + str(next_index))
 
             # first time the query is record
             if query_name not in query_duration:
@@ -86,13 +90,15 @@ with open("../create_report/temp_files/logs_example/pg-29.csv", "r") as f:
             thread_name = ""
 
             if to_record_flag:
-                print(index)
                 this_row = [query_name, duration, query_started_at, query_finished_at, query_status,
                             pg_pid, thread_name]
-                print(this_row)
                 writer.writerow(this_row)
 
-        print(query_duration)
 
-    # find error query
-# TODO: next_query index is wrong
+"""
+    calculation of query's started time:
+    the session_start_time of first the query's BEGIN
+    
+    calculation of query's finished time:
+    the session_start_time of the COMMIT / ROLLBACK + duration in this line
+"""

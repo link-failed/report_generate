@@ -2,13 +2,31 @@ import numpy as np
 import pandas as pd
 
 from bokeh.plotting import figure, show
+import csv
+
+
+def get_history_query_info():
+    yy = []
+    g = []
+    with open("../create_report/temp_files/res/all_dbt_log.csv") as f:
+        records = csv.reader(f)
+        # skip the header
+        next(records)
+        for record in records:
+            g.append(record[0])
+            yy.append(float(record[1]))
+    return yy, g
+
+
+yy, g = get_history_query_info()
 
 # generate some synthetic time series for six different categories
-cats = list("abcdef")
+
+cats = list(dict.fromkeys(g))
+# duration
 yy = np.random.randn(2000)
+#
 g = np.random.choice(cats, 2000)
-print(yy)
-print(g)
 for i, l in enumerate(cats):
     yy[g == l] += i // 2
 df = pd.DataFrame(dict(score=yy, group=g))
@@ -19,13 +37,16 @@ q1 = groups.quantile(q=0.25)
 q2 = groups.quantile(q=0.5)
 q3 = groups.quantile(q=0.75)
 iqr = q3 - q1
-upper = q3 + 1.5*iqr
-lower = q1 - 1.5*iqr
+upper = q3 + 1.5 * iqr
+lower = q1 - 1.5 * iqr
+
 
 # find the outliers for each category
 def outliers(group):
     cat = group.name
     return group[(group.score > upper.loc[cat]['score']) | (group.score < lower.loc[cat]['score'])]['score']
+
+
 out = groups.apply(outliers).dropna()
 
 # prepare outlier data for plotting, we need coordinates for every outlier.
@@ -38,8 +59,8 @@ p = figure(tools="", background_fill_color="#efefef", x_range=cats, toolbar_loca
 # if no outliers, shrink lengths of stems to be no longer than the minimums or maximums
 qmin = groups.quantile(q=0.00)
 qmax = groups.quantile(q=1.00)
-upper.score = [min([x,y]) for (x,y) in zip(list(qmax.loc[:,'score']),upper.score)]
-lower.score = [max([x,y]) for (x,y) in zip(list(qmin.loc[:,'score']),lower.score)]
+upper.score = [min([x, y]) for (x, y) in zip(list(qmax.loc[:, 'score']), upper.score)]
+lower.score = [max([x, y]) for (x, y) in zip(list(qmin.loc[:, 'score']), lower.score)]
 
 # stems
 p.segment(cats, upper.score, cats, q3.score, line_color="black")
@@ -60,6 +81,6 @@ if not out.empty:
 p.xgrid.grid_line_color = None
 p.ygrid.grid_line_color = "white"
 p.grid.grid_line_width = 2
-p.xaxis.major_label_text_font_size="16px"
+p.xaxis.major_label_text_font_size = "16px"
 
 show(p)
