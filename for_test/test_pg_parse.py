@@ -96,6 +96,9 @@ with open("../create_report/temp_files/logs_example/pg-29.csv", "r") as f:
 
 
 """
+    calculation of query's started time:
+    the session_start_time of first the query's BEGIN
+    
     calculation of query's finished time:
-    the log time of the COMMIT or ROLLBACK ?
+    the session_start_time of the COMMIT / ROLLBACK + duration in this line
 """
