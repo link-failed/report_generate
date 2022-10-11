@@ -5,15 +5,22 @@ import re
 from datetime import datetime
 
 import pandas as pd
-
+from pendulum import duration
+from src.base.dataframe import LogDataframe
 
 class BaseAdapter(ABC):
     """The adapter class """
 
+    def __init__(self) -> None:
+        super().__init__()
+        self.df = LogDataframe()
+
     @abstractmethod
-    def get_metadata():
+    def get_metadata(self):
         raise NotImplementedError('Please implement methods')
     
+    def get_df(self):
+        return self.df
 
 
 class DbtLogAdapter(BaseAdapter):
@@ -55,6 +62,9 @@ class DbtLogAdapter(BaseAdapter):
             self.periods[project_start_time] = self.running_id 
             self.metadatas[self.running_id] = {}
 
+            self.df.insert_running_date(project_start_time, self.running_id)
+            
+
     def _parse_query_ok_line(self, line):
         match = self.re_exp_query_ok.search(line)
         
@@ -65,12 +75,21 @@ class DbtLogAdapter(BaseAdapter):
             query_index = match.group(3)
             total_query_count = match.group(4)
             query_name = match.group(5)
-            rows_affect = match.group(6)
+            rows_effect = match.group(6)
             query_duration = match.group(7)
             metadata.get(query_name)['duration'] = float(query_duration)
             metadata.get(query_name)['query_end_time'] = query_end_time
             metadata.get(query_name)['thread_id'] = thread_id
-            metadata.get(query_name)['rows_effect'] = rows_affect
+            metadata.get(query_name)['rows_effect'] = rows_effect
+
+            data = dict(
+                duration = float(query_duration),
+                end_time = query_end_time,
+                thread_id = int(thread_id),
+                rows_effect = rows_effect
+            )
+
+            self.df.insert(self.running_id, query_name, **data)
 
             # print(rows_affect)
 
@@ -84,6 +103,12 @@ class DbtLogAdapter(BaseAdapter):
             total_query = match.group(4)        
             query_name = match.group(5)
             metadata[query_name] = {'query_start_time': query_start_time, 'total_query': total_query, 'query_index': query_index, 'query_name': query_name}
+            data = dict(
+                start_time = query_start_time, 
+                total= total_query,
+                qindex= int(query_index)
+            )
+            self.df.insert(self.running_id, query_name, **data)
         
 
 

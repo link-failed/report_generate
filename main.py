@@ -20,13 +20,18 @@ from bokeh.plotting import figure, curdoc
 log_path = '/Users/chenchunyu/Documents/workspace/Experiment/mimic/mimic-dbt/logs/'
 dla = DbtLogAdapter(log_path= log_path)
 # print(dla.get_period())
-report = Report(periods= dla.get_period(), metadata= dla.get_metadata())
 
+report = Report(dla.get_df())
 
+# report = Report(periods= dla.get_period(), metadata= dla.get_metadata())
+
+# print(dla.get_df())
+
+# dla.get_df
 # myapp.py
 
 
-curdoc().add_root(column(report.select, report.cdf))
+curdoc().add_root(report.layouts())
 
 
 # from bokeh.layouts import column
