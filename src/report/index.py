@@ -77,11 +77,11 @@ class Report:
     def _get_gantt_data(self, running_id):
         # self.gantt.x_range = Range1d('03:00', '05:00')
         md: pd.DataFrame = self.metadata.get_contents(running_id= running_id).copy()
-        md.thread_id = md.thread_id.astype(str)
+        md.thread_name = md.thread_name.astype(str)
         md.qindex = md.qindex.astype(int)
         
         md['end_time'] = md['end_time'].astype('datetime64[ns]')
-        group = md.groupby('thread_id')
+        group = md.groupby('thread_name')
         print(md.dtypes)
         
         x0 = md[md['qindex'] == 1]['start_time'][0]
@@ -145,7 +145,7 @@ class Report:
         print(self.gantt.x_range.start)
         print(self.gantt.x_range.end)
         print('--=-=-' * 10)
-        self.gantt.hbar(y="thread_id", left='start_time', right='end_time', height=0.4, source=source)
+        self.gantt.hbar(y="thread_name", left='start_time', right='end_time', height=0.4, source=source)
         # self.gantt.line('dates', 'y', color="navy", line_width=1,  source=source)
         
 

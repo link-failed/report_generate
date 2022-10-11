@@ -79,13 +79,13 @@ class DbtLogAdapter(BaseAdapter):
             query_duration = match.group(7)
             metadata.get(query_name)['duration'] = float(query_duration)
             metadata.get(query_name)['query_end_time'] = query_end_time
-            metadata.get(query_name)['thread_id'] = thread_id
+            metadata.get(query_name)['thread_name'] = thread_id
             metadata.get(query_name)['rows_effect'] = rows_effect
 
             data = dict(
                 duration = float(query_duration),
                 end_time = query_end_time,
-                thread_id = int(thread_id),
+                thread_name = int(thread_id),
                 rows_effect = rows_effect
             )
 
