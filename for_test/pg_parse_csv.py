@@ -5,10 +5,10 @@ with open("../create_report/temp_files/logs_example/pg-29.csv", "r") as f:
     """
         duration_info format:
         index: {duration: message, tag: command_tag}
-        
+
         query_info format:
         index: query_name
-        
+
         query_duration format:
         query_name: duration (ms)
     """
@@ -21,11 +21,11 @@ with open("../create_report/temp_files/logs_example/pg-29.csv", "r") as f:
     query_duration = {}
     duration_rule = r'duration: (.*?) ms'
     query_name_rule = r'\"node_id\": \"(.*?)\"'
-    csv_header = ["query_name", "execution_time", "query_started_at", "query_finished_at", "query_status", "dbt_pid",
+    csv_header = ["query_name", "execution_time", "query_started_at", "query_finished_at", "query_status", "pid",
                   "thread_name"]
 
     with open("/home/ceci/Desktop/report_generate/create_report/temp_files/res/test.csv", 'w') as output:
-    # with open(res_path + res_name, 'w') as output:
+        # with open(res_path + res_name, 'w') as output:
         writer = csv.writer(output)
         writer.writerow(csv_header)
 
@@ -94,11 +94,10 @@ with open("../create_report/temp_files/logs_example/pg-29.csv", "r") as f:
                             pg_pid, thread_name]
                 writer.writerow(this_row)
 
-
 """
     calculation of query's started time:
     the session_start_time of first the query's BEGIN
-    
+
     calculation of query's finished time:
     the session_start_time of the COMMIT / ROLLBACK + duration in this line
 """
