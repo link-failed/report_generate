@@ -17,8 +17,9 @@ from bokeh.models import Button
 from bokeh.palettes import RdYlBu3
 from bokeh.plotting import figure, curdoc
 
-log_path = '/Users/chenchunyu/Documents/workspace/Experiment/mimic/mimic/logs'
-dla = DbtLogAdapter(log_path= log_path)
+# log_path = '/Users/chenchunyu/Documents/workspace/Experiment/mimic/mimic/logs'
+log_path = '/home/ceci/Desktop/mimic-dbt/logs'
+dla = DbtLogAdapter(log_path=log_path)
 # print(dla.get_period())
 
 report = Report(dla.get_df())

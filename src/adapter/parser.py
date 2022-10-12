@@ -3,10 +3,18 @@ import glob, os
 import logging
 import re
 from datetime import datetime
+import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
+import pandas as pd
+import csv
+from palettable.cartocolors.sequential import agSunset_7, TealGrn_7
+from palettable.lightbartlein.diverging import BlueGray_8, BrownBlue10_10
+import mpld3
 
 import pandas as pd
 from pendulum import duration
 from src.base.dataframe import LogDataframe
+
 
 class BaseAdapter(ABC):
     """The adapter class """
@@ -18,7 +26,7 @@ class BaseAdapter(ABC):
     @abstractmethod
     def get_metadata(self):
         raise NotImplementedError('Please implement methods')
-    
+
     def get_df(self):
         return self.df
 
@@ -32,11 +40,10 @@ class DbtLogAdapter(BaseAdapter):
         self.periods = {}
         self.metadatas = {}
         self.running_id = None
-        self.logs = self._get_log_files(log_path = log_path)
-        
+        self.logs = self._get_log_files(log_path=log_path)
 
         self._parse_log_file()
-        
+
     def _get_log_files(self, log_path):
         EXT = '.log'
         logs = []
@@ -46,11 +53,12 @@ class DbtLogAdapter(BaseAdapter):
                 continue
             logs.append(fn)
         return logs
+
     def _parse_log_file(self):
         for logfile in self.logs:
             with open(logfile) as f:
                 for line in iter(f.readline, ''):
-                    self._parse_project_start_line(line= line)
+                    self._parse_project_start_line(line=line)
                     self._parse_query_start_line(line)
                     self._parse_query_ok_line(line)
 
@@ -59,15 +67,14 @@ class DbtLogAdapter(BaseAdapter):
         if match:
             project_start_time = match.group(1)
             self.running_id = match.group(2)
-            self.periods[project_start_time] = self.running_id 
+            self.periods[project_start_time] = self.running_id
             self.metadatas[self.running_id] = {}
 
             self.df.insert_running_date(project_start_time, self.running_id)
-            
 
     def _parse_query_ok_line(self, line):
         match = self.re_exp_query_ok.search(line)
-        
+
         if match:
             metadata = self.metadatas.get(self.running_id)
             query_end_time = datetime.strptime(match.group(1), '%H:%M:%S')
@@ -98,19 +105,141 @@ class DbtLogAdapter(BaseAdapter):
         if match:
             metadata = self.metadatas[self.running_id]
             query_start_time = datetime.strptime(match.group(1), '%H:%M:%S')
-            thread_id = match.group(2) 
+            thread_id = match.group(2)
             query_index = match.group(3)
-            total_query = match.group(4)        
+            total_query = match.group(4)
             query_name = match.group(5)
             metadata[query_name] = {'query_start_time': query_start_time, 'total_query': total_query, 'query_index': query_index, 'query_name': query_name}
             data = dict(
-                start_time = query_start_time, 
+                start_time = query_start_time,
                 total= total_query,
                 qindex= int(query_index)
             )
             self.df.insert(self.running_id, query_name, **data)
-        
 
+    def get_period(self):
+        return self.periods
+
+    def get_metadata(self):
+        return self.metadatas
+
+
+class DbtJsonLogAdapter(BaseAdapter):
+    def __init__(self, log_path) -> None:
+        super().__init__()
+        self.duration_rule = re.compile(r'"rows_affected": (.*?),')
+        self.query_end_time_rule = re.compile(r'\"node_finished_at\": (.*?),')
+        self.query_name_rule = re.compile(r'\"node_name\": (.*?),')
+        self.rows_affected_rule = re.compile(r'"rows_affected": (.*?),')
+        self.periods = {}
+        self.metadatas = {}
+        self.running_id = None
+        self.logs = self._get_log_files(log_path=log_path)
+
+        self._parse_log_file()
+
+    def _get_log_files(self, log_path):
+        EXT = '.log'
+        logs = []
+        for fn in glob.glob(os.path.join(log_path, '*%s' % EXT)):
+            if not os.path.isfile(fn):
+                logging.debug('Skipping file %s' % fn)
+                continue
+            logs.append(fn)
+        return logs
+
+    def _parse_log_file(self):
+        for logfile in self.logs:
+            with open(logfile) as f:
+                for line in f:
+                    self._parse_line(line=line)
+
+    def _parse_project_start_line(self, line):
+        match = self.re_exp_project_start_time.search(line)
+        if match:
+            project_start_time = match.group(1)
+            self.running_id = match.group(2)
+            self.periods[project_start_time] = self.running_id
+            self.metadatas[self.running_id] = {}
+
+            self.df.insert_running_date(project_start_time, self.running_id)
+
+    def _parse_query_ok_line(self, line):
+        match = self.re_exp_query_ok.search(line)
+
+        if match:
+            metadata = self.metadatas.get(self.running_id)
+            query_end_time = datetime.strptime(match.group(1), '%H:%M:%S')
+            thread_id = match.group(2)
+            query_index = match.group(3)
+            total_query_count = match.group(4)
+            query_name = match.group(5)
+            rows_effect = match.group(6)
+            query_duration = match.group(7)
+            metadata.get(query_name)['duration'] = float(query_duration)
+            metadata.get(query_name)['query_end_time'] = query_end_time
+            metadata.get(query_name)['thread_name'] = thread_id
+            metadata.get(query_name)['rows_effect'] = rows_effect
+
+            data = dict(
+                duration = float(query_duration),
+                end_time = query_end_time,
+                thread_name = int(thread_id),
+                rows_effect = rows_effect
+            )
+
+            self.df.insert(self.running_id, query_name, **data)
+
+            # print(rows_affect)
+
+    def _parse_query_start_line(self, line):
+        match = self.re_exp_query_start.search(line)
+        if match:
+            metadata = self.metadatas[self.running_id]
+            for jsonStr in this_lines:
+                json_data = json.loads(jsonStr)
+                execution_time = find_execution_time(jsonStr)
+                if execution_time == "" or execution_time == "0":
+                    continue
+
+                for k, v in json_data.items():
+                    if k == 'level':
+                        level = v
+                        if level == "debug":
+                            continue
+                    elif k == 'pid':
+                        dbt_pid = v
+                    elif k == 'thread_name':
+                        thread_name = v
+                        # thread_name = int(v[7:])
+
+                rule = r'\"node_info\": {(.*?)},'
+                if re.search(rule, jsonStr) is not None:
+                    record = re.search(rule, jsonStr).group(1)
+
+                    node_finished_at = re.search(self.query_end_time_rule, record)
+                    node_name = re.search(self.query_name_rule, record)
+                    node_started_at = find_node_started(record)
+
+                    this_row = [node_name, execution_time, node_started_at, node_finished_at, node_status, dbt_pid,
+                                thread_name]
+
+                else:
+                    continue
+
+                writer.writerow(this_row)
+            # query_start_time = datetime.strptime(match.group(1), '%H:%M:%S')
+            # thread_id = match.group(2)
+            # query_index = match.group(3)
+            # total_query = match.group(4)
+            # query_name = match.group(5)
+            metadata[query_name] = {'query_start_time': query_start_time, 'total_query': total_query, 'query_index': query_index, 'query_name': query_name}
+            data = dict(
+                start_time = query_start_time,
+                total= total_query,
+                qindex= int(query_index)
+            )
+            self.df.insert(self.running_id, query_name, **data)
 
     def get_period(self):
         return self.periods
