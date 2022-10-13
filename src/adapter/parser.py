@@ -3,6 +3,7 @@ import glob, os
 import logging
 import re
 from datetime import datetime
+import json
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 import pandas as pd
@@ -34,9 +35,12 @@ class BaseAdapter(ABC):
 class DbtLogAdapter(BaseAdapter):
     def __init__(self, log_path) -> None:
         super().__init__()
-        self.re_exp_query_ok = re.compile(r'.*(\d+:\d+:\d+)\.\d+\s\[info\s\]\s\[Thread-(\d+).*\]\:\s(\d+)\sof\s(\d+)\sOK created table model .*\.(\w+) .*SELECT\s(\d+).*in\s(\d+\.\d+)s')
-        self.re_exp_query_start = re.compile(r'(\d+:\d+:\d+)\.\d+\s\[info\s\]\s\[Thread-(\d+).*\]\:\s(\d+)\sof\s(\d+)\sSTART .* model .*\.(\w+) .+ \[RUN\]')
-        self.re_exp_project_start_time = re.compile(r'=*\s(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}).*\s\|\s([0-9a-zA-Z]{8}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]*)\s')
+        self.re_exp_query_ok = re.compile(
+            r'.*(\d+:\d+:\d+)\.\d+\s\[info\s\]\s\[Thread-(\d+).*\]\:\s(\d+)\sof\s(\d+)\sOK created table model .*\.(\w+) .*SELECT\s(\d+).*in\s(\d+\.\d+)s')
+        self.re_exp_query_start = re.compile(
+            r'(\d+:\d+:\d+)\.\d+\s\[info\s\]\s\[Thread-(\d+).*\]\:\s(\d+)\sof\s(\d+)\sSTART .* model .*\.(\w+) .+ \[RUN\]')
+        self.re_exp_project_start_time = re.compile(
+            r'=*\s(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}).*\s\|\s([0-9a-zA-Z]{8}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]*)\s')
         self.periods = {}
         self.metadatas = {}
         self.running_id = None
@@ -90,10 +94,10 @@ class DbtLogAdapter(BaseAdapter):
             metadata.get(query_name)['rows_effect'] = rows_effect
 
             data = dict(
-                duration = float(query_duration),
-                end_time = query_end_time,
-                thread_name = int(thread_id),
-                rows_effect = rows_effect
+                duration=float(query_duration),
+                end_time=query_end_time,
+                thread_name=int(thread_id),
+                rows_effect=rows_effect
             )
 
             self.df.insert(self.running_id, query_name, **data)
@@ -109,11 +113,12 @@ class DbtLogAdapter(BaseAdapter):
             query_index = match.group(3)
             total_query = match.group(4)
             query_name = match.group(5)
-            metadata[query_name] = {'query_start_time': query_start_time, 'total_query': total_query, 'query_index': query_index, 'query_name': query_name}
+            metadata[query_name] = {'query_start_time': query_start_time, 'total_query': total_query,
+                                    'query_index': query_index, 'query_name': query_name}
             data = dict(
-                start_time = query_start_time,
-                total= total_query,
-                qindex= int(query_index)
+                start_time=query_start_time,
+                total=total_query,
+                qindex=int(query_index)
             )
             self.df.insert(self.running_id, query_name, **data)
 
@@ -127,10 +132,16 @@ class DbtLogAdapter(BaseAdapter):
 class DbtJsonLogAdapter(BaseAdapter):
     def __init__(self, log_path) -> None:
         super().__init__()
-        self.duration_rule = re.compile(r'"rows_affected": (.*?),')
-        self.query_end_time_rule = re.compile(r'\"node_finished_at\": (.*?),')
-        self.query_name_rule = re.compile(r'\"node_name\": (.*?),')
+        self.query_start_time_rule = re.compile(r'"node_started_at": (.*?),')
+        self.query_end_time_rule = re.compile(r'"node_finished_at": (.*?),')
+        self.query_name_rule = re.compile(r'"node_name": (.*?),')
         self.rows_affected_rule = re.compile(r'"rows_affected": (.*?),')
+        self.query_index_rule = re.compile(r'"index": (.*?),')
+        self.duration_rule = re.compile(r'"execution_time": (.*?),')
+        self.running_id_rule = re.compile(r'"invocation_id": (.*?),')
+        self.thread_name_rule = re.compile(r'"thread_name": (.*?),')
+        self.total_query_rule = re.compile(r'(\d+)\sof\s(\d+)\sSTART .* model .*\.(\w+) .+ \[RUN\]')
+
         self.periods = {}
         self.metadatas = {}
         self.running_id = None
@@ -152,9 +163,13 @@ class DbtJsonLogAdapter(BaseAdapter):
         for logfile in self.logs:
             with open(logfile) as f:
                 for line in f:
-                    self._parse_line(line=line)
+                    json_data = json.loads(line)
+                    if json_data["level"] == "info":
+                        self._parse_info_line(line=line)
+                    elif json_data["level"] == "debug":
+                        self._parse_debug_line(line=line)
 
-    def _parse_project_start_line(self, line):
+    def _parse_info_line(self, line):
         match = self.re_exp_project_start_time.search(line)
         if match:
             project_start_time = match.group(1)
@@ -164,82 +179,46 @@ class DbtJsonLogAdapter(BaseAdapter):
 
             self.df.insert_running_date(project_start_time, self.running_id)
 
-    def _parse_query_ok_line(self, line):
-        match = self.re_exp_query_ok.search(line)
+    def _parse_debug_line(self, line):
+        json_data = json.loads(line)
+        msg_str = json_data["msg"]
+        total_query = re.search(self.total_query_rule, msg_str)
 
-        if match:
+        json_record = json.loads(line)
+        execution_time = re.search(self.duration_rule, line)
+        query_name = re.search(self.query_name_rule, line)
+        query_index = re.search(self.query_index_rule, line)
+        running_id = re.search(self.running_id_rule, line)
+        thread_name = re.search(self.thread_name_rule, line)
+        rows_effect = re.search(self.rows_affected_rule, line)
+        if execution_time != "" and execution_time != "0":
             metadata = self.metadatas.get(self.running_id)
-            query_end_time = datetime.strptime(match.group(1), '%H:%M:%S')
-            thread_id = match.group(2)
-            query_index = match.group(3)
-            total_query_count = match.group(4)
-            query_name = match.group(5)
-            rows_effect = match.group(6)
-            query_duration = match.group(7)
-            metadata.get(query_name)['duration'] = float(query_duration)
-            metadata.get(query_name)['query_end_time'] = query_end_time
-            metadata.get(query_name)['thread_name'] = thread_id
-            metadata.get(query_name)['rows_effect'] = rows_effect
+            if "data" in json_record:
+                json_data = json_record["data"]
 
-            data = dict(
-                duration = float(query_duration),
-                end_time = query_end_time,
-                thread_name = int(thread_id),
-                rows_effect = rows_effect
-            )
+            rule = r'"node_info": {(.*?)},'
+            if re.search(rule, line) is not None:
+                record = re.search(rule, line).group(1)
+                query_start_time = re.search(self.query_start_time_rule, record)
+                query_end_time = re.search(self.query_end_time_rule, record)
 
-            self.df.insert(self.running_id, query_name, **data)
+                metadata.get(query_name)['duration'] = float(duration)
+                metadata.get(query_name)['query_end_time'] = query_end_time
+                metadata.get(query_name)['thread_name'] = int(thread_name[7:0])
+                metadata.get(query_name)['rows_effect'] = rows_effect
+                metadata[query_name] = {'query_start_time': query_start_time, 'total_query': total_query,
+                                        'query_index': query_index, 'query_name': query_name}
 
-            # print(rows_affect)
+                data = dict(
+                    duration=float(duration),
+                    end_time=query_end_time,
+                    thread_name=int(thread_name[7:]),
+                    rows_effect=rows_effect
+                )
 
-    def _parse_query_start_line(self, line):
-        match = self.re_exp_query_start.search(line)
-        if match:
-            metadata = self.metadatas[self.running_id]
-            for jsonStr in this_lines:
-                json_data = json.loads(jsonStr)
-                execution_time = find_execution_time(jsonStr)
-                if execution_time == "" or execution_time == "0":
-                    continue
+                self.df.insert(self.running_id, query_name, **data)
 
-                for k, v in json_data.items():
-                    if k == 'level':
-                        level = v
-                        if level == "debug":
-                            continue
-                    elif k == 'pid':
-                        dbt_pid = v
-                    elif k == 'thread_name':
-                        thread_name = v
-                        # thread_name = int(v[7:])
-
-                rule = r'\"node_info\": {(.*?)},'
-                if re.search(rule, jsonStr) is not None:
-                    record = re.search(rule, jsonStr).group(1)
-
-                    node_finished_at = re.search(self.query_end_time_rule, record)
-                    node_name = re.search(self.query_name_rule, record)
-                    node_started_at = find_node_started(record)
-
-                    this_row = [node_name, execution_time, node_started_at, node_finished_at, node_status, dbt_pid,
-                                thread_name]
-
-                else:
-                    continue
-
-                writer.writerow(this_row)
-            # query_start_time = datetime.strptime(match.group(1), '%H:%M:%S')
-            # thread_id = match.group(2)
-            # query_index = match.group(3)
-            # total_query = match.group(4)
-            # query_name = match.group(5)
-            metadata[query_name] = {'query_start_time': query_start_time, 'total_query': total_query, 'query_index': query_index, 'query_name': query_name}
-            data = dict(
-                start_time = query_start_time,
-                total= total_query,
-                qindex= int(query_index)
-            )
-            self.df.insert(self.running_id, query_name, **data)
+        match = self.re_exp_query_ok.search(line)
 
     def get_period(self):
         return self.periods
