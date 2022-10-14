@@ -10,7 +10,6 @@ import pandas as pd
 import csv
 from palettable.cartocolors.sequential import agSunset_7, TealGrn_7
 from palettable.lightbartlein.diverging import BlueGray_8, BrownBlue10_10
-import mpld3
 
 import pandas as pd
 from pendulum import duration

@@ -1,0 +1,152 @@
+agate==1.6.3
+anytree==2.8.0
+appnope==0.1.3
+asttokens==2.0.5
+attrs==21.4.0
+Babel==2.10.3
+backcall==0.2.0
+bcrypt @ file:///Users/runner/miniforge3/conda-bld/bcrypt_1651441610056/work
+black==22.6.0
+bleach==5.0.1
+bokeh @ file:///home/conda/feedstock_root/build_artifacts/bokeh_1660586590972/work
+build==0.8.0
+bump2version==1.0.1
+bumpversion==0.6.0
+certifi==2022.9.24
+cffi @ file:///Users/runner/miniforge3/conda-bld/cffi_1656782906223/work
+cfgv==3.3.1
+charset-normalizer==2.1.0
+click==6.7
+colorama==0.4.5
+commonmark==0.9.1
+contourpy @ file:///Users/runner/miniforge3/conda-bld/contourpy_1662135148558/work
+coverage==6.4.2
+criticalpath==0.1.5
+cryptography @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_b470f7cb-c8f1-42c9-b84f-23789ea77e7c9difcqh4/croots/recipe/cryptography_1652101134392/work
+cycler @ file:///home/conda/feedstock_root/build_artifacts/cycler_1635519461629/work
+-e git+ssh://git@github.com/dbt-labs/dbt-core.git@f988f76fccc1878aaf8d8631c05be3e9104b3b9a#egg=dbt_core&subdirectory=core
+dbt-extractor==0.4.1
+-e git+ssh://git@github.com/dbt-labs/dbt-core.git@f988f76fccc1878aaf8d8631c05be3e9104b3b9a#egg=dbt_postgres&subdirectory=plugins/postgres
+-e git+ssh://git@github.com/dbt-labs/dbt-core.git@f988f76fccc1878aaf8d8631c05be3e9104b3b9a#egg=dbt_tests_adapter&subdirectory=tests/adapter
+decorator==5.1.1
+distlib==0.3.5
+docutils==0.19
+execnet==1.9.0
+executing==0.8.3
+filelock==3.7.1
+flake8==4.0.1
+flaky==3.7.0
+fonttools @ file:///Users/runner/miniforge3/conda-bld/fonttools_1663708141179/work
+freezegun==0.3.12
+future==0.18.2
+hologram==0.0.15
+identify==2.5.1
+idna==3.3
+importlib-metadata==4.12.0
+iniconfig==1.1.1
+ipdb==0.13.9
+ipython==8.4.0
+isodate==0.6.1
+jedi==0.18.1
+Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/jinja2_1654302431367/work
+jsonpickle==2.2.0
+jsonschema==3.2.0
+keyring==23.7.0
+kiwisolver @ file:///Users/runner/miniforge3/conda-bld/kiwisolver_1657953140253/work
+leather==0.3.4
+Logbook==1.5.3
+MarkupSafe @ file:///Users/runner/miniforge3/conda-bld/markupsafe_1648737730795/work
+mashumaro==2.9
+matplotlib @ file:///Users/runner/miniforge3/conda-bld/matplotlib-suite_1663358967484/work
+matplotlib-inline==0.1.3
+mccabe==0.6.1
+minimal-snowplow-tracker==0.0.2
+msgpack==1.0.4
+munkres==1.1.4
+mypy==0.961
+mypy-extensions==0.4.3
+networkx==2.8.4
+nodeenv==1.7.0
+numpy @ file:///Users/runner/miniforge3/conda-bld/numpy_1662888927969/work
+packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1637239678211/work
+palettable==3.3.0
+paramiko @ file:///home/conda/feedstock_root/build_artifacts/paramiko_1652792654356/work
+parsedatetime==2.4
+parso==0.8.3
+pathspec==0.9.0
+pep517==0.12.0
+pexpect==4.8.0
+pg-materialize==0.4.1
+pglast==3.14
+pickleshare==0.7.5
+Pillow @ file:///Users/runner/miniforge3/conda-bld/pillow_1660385906116/work
+pip-tools==6.8.0
+pkginfo==1.8.3
+platformdirs==2.5.2
+pluggy==1.0.0
+pre-commit==2.20.0
+prompt-toolkit==3.0.30
+psqlparse==1.0rc5
+psycopg2-binary==2.9.3
+ptyprocess==0.7.0
+pure-eval==0.2.2
+py==1.11.0
+pycodestyle==2.8.0
+pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1636257122734/work
+pyflakes==2.4.0
+Pygments==2.12.0
+PyNaCl @ file:///Users/runner/miniforge3/conda-bld/pynacl_1649520039499/work
+pyparsing @ file:///home/conda/feedstock_root/build_artifacts/pyparsing_1652235407899/work
+pyrsistent==0.18.1
+pytest==7.1.2
+pytest-cov==3.0.0
+pytest-csv==3.0.0
+pytest-dotenv==0.5.2
+pytest-forked==1.4.0
+pytest-logbook==1.2.0
+pytest-mock==3.8.2
+pytest-xdist==2.5.0
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
+python-dotenv==0.20.0
+python-slugify==6.1.2
+pytimeparse==1.1.8
+pytz==2018.7
+pyvis==0.2.1
+PyYAML @ file:///Users/runner/miniforge3/conda-bld/pyyaml_1648757416758/work
+readme-renderer==35.0
+requests==2.28.1
+requests-toolbelt==0.9.1
+rfc3986==2.0.0
+rich==12.5.1
+six==1.11.0
+sqlparse @ file:///home/conda/feedstock_root/build_artifacts/sqlparse_1631317292236/work
+sshtunnel @ file:///home/conda/feedstock_root/build_artifacts/sshtunnel_1636361596594/work
+stack-data==0.3.0
+text-unidecode==1.3
+toml==0.10.2
+tomli==2.0.1
+toolz==0.12.0
+toposort==1.7
+tornado @ file:///Users/runner/miniforge3/conda-bld/tornado_1656938153326/work
+tox==3.25.1
+traitlets==5.3.0
+twine==4.0.1
+types-colorama==0.4.15
+types-freezegun==1.1.10
+types-Jinja2==2.11.9
+types-MarkupSafe==1.1.10
+types-mock==4.0.15
+types-python-dateutil==2.8.18
+types-pytz==2022.1.1
+types-PyYAML==6.0.10
+types-requests==2.28.1
+types-setuptools==63.2.0
+types-urllib3==1.26.16
+typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1656706066251/work
+unicodedata2 @ file:///Users/runner/miniforge3/conda-bld/unicodedata2_1649111979354/work
+urllib3==1.26.10
+virtualenv==20.15.1
+wcwidth==0.2.5
+webencodings==0.5.1
+Werkzeug==0.14.1
+zipp==3.8.1
