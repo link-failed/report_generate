@@ -2,11 +2,11 @@
 from calendar import c
 from os import times
 import pandas as pd
-from pendulum import time
+
+from datetime import datetime
 
 
 class LogDataframe():
-
     def __init__(self) -> None:
         # 100 queries 
         # dbt = > log
@@ -24,31 +24,35 @@ class LogDataframe():
 
         self.histories = {}
         self.contents = {}
+        self.summary = {}
 
 
-    def get_running_id(self, run_date):
+    def get_running_id(self, run_date) -> str:
+        if isinstance(run_date, datetime):
+            run_date = datetime.strftime(run_date, '%Y-%m-%d %H:%M:%S')
         for running_id, d in self.histories.items():
+            # print(f'rdate in md is {d}  --- {type(d)} === {type(run_date)}')
             if d == run_date:
                 return running_id
         return None
-
-    def get_period(self):
-        return self.periods
+    def get_running_time(self, running_id) -> str:
+        rdate = self.histories.get(running_id)
+        return rdate #datetime.strftime(self.histories[running_id], '%Y-%m-%d %H:%M:%S') if running_id in self.histories else None
         
     def get_contents(self, running_id):
         if running_id not in self.contents:
-            self.contents[running_id] = pd.DataFrame(columns= ['name', 'start_time', 'end_time', 'duration', 'thread_name', 'qindex', 'total', 'rows_effect'])
-            # self.contents[running_id] = pd.DataFrame({
-            #     'name': pd.Series(dtype= 'str'),
-            #     'start_time': pd.Series(dtype= 'datetime64[ns]'),
-            #     'end_time': pd.Series(dtype= 'datetime64[ns]'),
-            #     'duration': pd.Series(dtype= 'float'),
-            #     'thread_name': pd.Series(dtype= 'str'),
-            #     'qindex': pd.Series(dtype= 'int'),
-            #     'total': pd.Series(dtype= 'int'),
-            #     'rows_effect': pd.Series(dtype= 'int')
-            # # })
-            # columns= ['name', 'start_time', 'end_time', 'duration', 'thread_id', 'qindex', 'total', 'rows_effect']
+            # self.contents[running_id] = pd.DataFrame(columns= ['name', 'start_time', 'end_time', 'duration', 'thread_name', 'qindex', 'total', 'rows_effect'])
+            self.contents[running_id] = pd.DataFrame({
+                'name': pd.Series(dtype= 'str'),
+                'status': pd.Series(dtype='str'),
+                'start_time': pd.Series(dtype= 'datetime64[ns]'),
+                'end_time': pd.Series(dtype= 'datetime64[ns]'),
+                'duration': pd.Series(dtype= 'float'),
+                'thread_name': pd.Series(dtype= 'str'),
+                'qindex': pd.Series(dtype= 'int'),
+                'total': pd.Series(dtype= 'int'),
+                'rows_effect': pd.Series(dtype= 'int')
+            })
         return self.contents[running_id]
     def insert_running_date(self, run_date, running_id):
         self.histories[running_id] = run_date

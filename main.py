@@ -3,7 +3,7 @@ import utils
 # utils.display_html('hwllo world')
 from src.adapter.parser import DbtLogAdapter
 from src.report.index import Report
-
+from src.adapter.dbt_log_parser import DbtJsonLogAdapter
 # # if __name__ == '__main__':
 # #     log_path = '/Users/chenchunyu/Documents/workspace/Experiment/mimic/mimic/logs'
 # #     dla = DbtLogAdapter(log_path= log_path)
@@ -18,18 +18,23 @@ from bokeh.palettes import RdYlBu3
 from bokeh.plotting import figure, curdoc
 
 # log_path = '/Users/chenchunyu/Documents/workspace/Experiment/mimic/mimic/logs'
-log_path = '/home/ceci/Desktop/mimic-dbt/logs'
-dla = DbtLogAdapter(log_path=log_path)
-# print(dla.get_period())
+log_path = '/Users/chenchunyu/Documents/workspace/Experiment/mimic/mimic-dbt/logs'
 
-report = Report(dla.get_df())
+dja = DbtJsonLogAdapter(log_path= log_path)
 
-# report = Report(periods= dla.get_period(), metadata= dla.get_metadata())
 
-# print(dla.get_df())
 
-# dla.get_df
-# myapp.py
+# dla = DbtLogAdapter(log_path=log_path)
+# # print(dla.get_period())
+
+report = Report(dja.get_df())
+
+# # report = Report(periods= dla.get_period(), metadata= dla.get_metadata())
+
+# # print(dla.get_df())
+
+# # dla.get_df
+# # myapp.py
 
 
 curdoc().add_root(report.layouts())
@@ -78,3 +83,41 @@ curdoc().add_root(report.layouts())
 
 #     server.io_loop.add_callback(server.show, "/")
 #     server.io_loop.start()
+
+
+# import datetime
+
+# import bokeh.plotting
+# from bokeh.io import curdoc
+# from bokeh.models import ColumnDataSource, Range1d, RangeTool
+# from bokeh.models.tickers import FixedTicker, DatetimeTicker, DaysTicker
+# from bokeh.models import DatetimeTickFormatter
+
+# time_strs = ['2019-07-11 10:00:00', '2019-07-11 10:15:00', '2019-07-11 10:30:00', '2019-07-11 10:45:00']
+# time_objs = [datetime.datetime.strptime(time_str, '%Y-%m-%d %H:%M:%S') for time_str in time_strs]
+# data = dict(x=time_objs, y=[5,4,6,5])
+
+# timeline = bokeh.plotting.figure(x_axis_type='datetime')
+# timeline.x(x='x', y='y', source=ColumnDataSource(data))
+
+     
+# timeline.xaxis.formatter=DatetimeTickFormatter(days="%m/%d %H:%M",
+#             months="%m/%d %H:%M",
+#             hours="%m/%d %H:%M",
+#             minutes="%m/%d %H:%M")
+
+# def print_values(attr, old, new):
+#     print(attr)
+#     print(old, type(old))
+#     print(new, type(new))
+#     print(datetime.datetime.fromtimestamp(new / 1e3))
+#     print(datetime.datetime.utcfromtimestamp(new / 1e3))
+
+# range = Range1d(start=time_objs[0], end=time_objs[-1])
+# range.on_change('end', print_values)
+# range_tool = RangeTool(x_range=range)
+# timeline.add_tools(range_tool)
+
+
+
+# curdoc().add_root(timeline)
