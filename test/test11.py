@@ -166,6 +166,22 @@ from bokeh.models import ColumnDataSource, RangeTool,DataRange1d, Range1d, Custo
 from bokeh.plotting import figure
 from bokeh.layouts import gridplot
 
+from datetime import datetime
+from typing import Dict, List
+import pandas as pd
+import numpy as np
+from bokeh.layouts import column, row
+from bokeh.palettes import Spectral5
+from bokeh.transform import factor_cmap
+
+from bokeh.palettes import Category20
+from bokeh.plotting import figure
+
+
+
+from bokeh.models import ColumnDataSource, RangeTool, Range1d, CategoricalColorMapper, DatetimeTickFormatter
+from bokeh.palettes import Turbo256
+
 x =  [1,2,3,4,5,6,7,8,9,10]
 y1 = [4,5,6,4,8,9,5,6,4,5]
 y2 = [3,5,6,8,7,5,9,2,4,5]
@@ -196,9 +212,47 @@ select.ygrid.grid_line_color = None
 select.add_tools(range_tool)
 select.toolbar.active_multi = range_tool
 
+# print(select.x_range.start)
 
-print(select.x_range.start)
+factors = ['Apples', 'Pears', 'Nectarines', 'Plums', 'Grapes', 'Strawberries']
 
+# index_cmap = factor_cmap('factors', palette=Spectral5, factors=factors, end=1)
+
+
+cmap = CategoricalColorMapper(palette = Spectral5, factors = factors , nan_color = 'blue')
+
+# cmap.palette('Apples')
+print(cmap.factors)
+print(cmap.palette)
+
+print(type(cmap.factors))
+
+print(cmap.palette[cmap.factors.index('Apples')])
+# color = self.color_mapper.palette[self.color_mapper.factors.index(rid)]
+# print(cmap.factors.transform('Apples'))
+
+# print(cmap['Apples'])
+# {"field": 'label', "transform": cmap}
+
+def _get_categorical_palette(factors: List[str]) -> Dict[str, str]:
+    n = max(3, len(factors))
+    # if n < len(palette):
+    #     _palette = Spectral5
+    # elif n < 21:
+    #     from bokeh.palettes import Category20
+    #     _palette = Category20[n]
+    # else:
+    from bokeh.palettes import viridis
+    _palette = viridis(n)
+
+    return CategoricalColorMapper(factors=factors, palette=_palette)
+
+# print(_get_categorical_palette(factors= factors)['Apples'])
+# palette=palette,
+#                                                     factors=factors,
+#                                                     start=start,
+#                                                     end=end,
+#                                                     nan_color=nan_color)
 # xdr.
 
 

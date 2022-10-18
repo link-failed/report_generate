@@ -7,17 +7,17 @@ import numpy as np
 from bokeh.layouts import column, row
 from bokeh.palettes import Spectral5
 from bokeh.transform import factor_cmap
+from bokeh.models import Panel, Tabs
 
-from bokeh.palettes import Category20
 from bokeh.plotting import figure
 
 from . import BaseComponent
 from src.base.dataframe import LogDataframe
 from bokeh.models import ColumnDataSource, RangeTool, Range1d, CategoricalColorMapper
-from bokeh.palettes import Spectral6
+
 
 class CDFComponent(BaseComponent):
-    def __init__(self, metadata: LogDataframe, selected_range: Range1d = None, height = 480, width = 600) -> None:
+    def __init__(self, metadata: LogDataframe, selected_range: Range1d = None, height = 480, width = 500) -> None:
         super().__init__()
         self.metadata = metadata
         self.data_source = {}
@@ -30,6 +30,7 @@ class CDFComponent(BaseComponent):
                 tools= tools, 
                 tooltips = "@name: @wait",
                 active_drag="box_select",
+                toolbar_location=None,
                 background_fill_color="#fafafa"
             )
         self.cdf_each_query = figure(
@@ -38,17 +39,18 @@ class CDFComponent(BaseComponent):
                 tools= tools,                 
                 tooltips = tooltips,
                 active_drag="box_select",
+                toolbar_location=None,
                 background_fill_color="#fafafa"
             )
             
         self.select_range = selected_range
     
-        self.color_map = factor_cmap('rid', palette=Spectral6, factors=list(self.metadata.histories.keys()))
+        self.color_mapper = self._get_categorical_palette(factors= list( metadata.histories.keys()))
 
         
  
-        factors = list(self.metadata.histories.keys())
-        ccm = CategoricalColorMapper( palette=Spectral6,  factors=factors, start= 0, end = None, nan_color =  "gray")
+        
+        
     
         self.select_range.on_change('start', self.update_figure)
         self.select_range.on_change('end', self.update_figure)
@@ -65,33 +67,38 @@ class CDFComponent(BaseComponent):
                 if running_id not in self.data_source:                
                     self.data_source[running_id] = self._get_cdf_data(running_id)
                     # print(f'data source is {self._get_cdf_data(running_id)}')
-                elif running_id in self.data_source and len(self.data_source[running_id].get('each').data.get('duration')) == 0:
-                    self.data_source[running_id] = self._get_cdf_data(running_id)
-                    
+                # elif running_id in self.data_source and len(self.data_source[running_id].get('each').data.get('duration')) == 0:
+                #     self.data_source[running_id] = self._get_cdf_data(running_id)
         return rid_list
     
     def _update_figure2(self, rid_list: List):
 
+        
         render_name_list = []
         for renders in self.cdf_each_query.renderers:
+            render_name_list.append(renders.name)
             if renders.name not in rid_list and renders.name in self.data_source:
-                
-                render_name_list.append(renders.name)
-                self._get_cdf_data(renders.name, empty= True)
+                renders.visible = False                
+            elif renders.name in rid_list and renders.name in self.data_source:
+                renders.visible = True
         
-        color = Category20[20]
-        idx = 0
+        for renders in self.cdf_all_query.renderers:
+            render_name_list.append(renders.name)
+            if renders.name not in rid_list and renders.name in self.data_source:
+                renders.visible = False
+            elif renders.name in rid_list and renders.name in self.data_source:
+                renders.visible = True
+        
+        
         for rid in rid_list:
             if rid not in render_name_list:                
                 data = self.data_source[rid]
                 cdf_each = data.get('each')
                 label = self.metadata.get_running_time(rid)
-                self._plot_line2(self.cdf_each_query, cdf_each, rid, label, color[idx])
-
+                color = self.color_mapper.palette[self.color_mapper.factors.index(rid)]
+                self._plot_line2(self.cdf_each_query, cdf_each, rid, label, color)
                 cdf_all = data.get('all')
-                self._plot_line2(self.cdf_all_query, cdf_all, rid, label, color[idx], x= 'wait')
-
-            idx += 1
+                self._plot_line2(self.cdf_all_query, cdf_all, rid, label, color, x= 'wait')
     def update_figure(self, attrname, old, new):
         # print(new)
         # if attrname == 'start':
@@ -101,6 +108,7 @@ class CDFComponent(BaseComponent):
             
         start = datetime.utcfromtimestamp(self.select_range.start / 1000.0) if isinstance(self.select_range.start, float) else self.select_range.start
         end = datetime.utcfromtimestamp(self.select_range.end / 1000.0) if isinstance(self.select_range.end, float) else self.select_range.end 
+
         rid_list = self._get_target_running_id(start, end)
         self._update_figure2(rid_list)
 
@@ -151,10 +159,16 @@ class CDFComponent(BaseComponent):
         f.line(x, 'y', source = source, legend_label = label, line_width=2, line_color = color, name = rid)
         f.circle(x, 'y', source = source, fill_color= color, line_color = color, legend_label = label, name = rid)
        
+        f.legend.location = 'top_right'
+        # f.legend.orientation = "horizontal"
+        f.legend.click_policy = 'hide'
 
 
     def get_layouts(self):
-        return row(self.cdf_all_query, self.cdf_each_query)
+        tab1 = Panel(child=self.cdf_all_query, title="all")
+        tab2 = Panel(child=self.cdf_each_query, title="each")
+
+        return row(Tabs(tabs=[tab1, tab2]))
             
 
             
