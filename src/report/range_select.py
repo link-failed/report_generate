@@ -12,16 +12,25 @@ from src.base.dataframe import LogDataframe
 from bokeh.layouts import column
 from bokeh.models import DatetimeTickFormatter
 from bokeh.models.tickers import FixedTicker, DatetimeTicker, DaysTicker
-from typing import Any
-from bokeh.events import MouseLeave, RangesUpdate, PressUp, Press, Pan
 
-from .cdf import CDFComponent
-from bokeh.models import BoxAnnotation
 
+
+
+def print_event(attributes=[]):
+    """
+    Function that returns a Python callback to pretty print the events.
+    """
+    def python_callback(event):
+        cls_name = event.__class__.__name__
+        attrs = ', '.join(['{attr}={val}'.format(attr=attr, val=event.__dict__[attr])
+                       for attr in attributes])
+        print(f"{cls_name}({attrs})")
+
+    return python_callback
 
 
 class HistoryRunning(BaseComponent):
-    def __init__(self, metadata: LogDataframe, selected_range: Range1d = None, height = 230, width = 800) -> None:
+    def __init__(self, metadata: LogDataframe, selected_range: Range1d = None, height = 180, width = 1300) -> None:
         super().__init__()
         self.metadata = metadata
         df = self._parse_metadata(metadata= metadata)
@@ -31,11 +40,8 @@ class HistoryRunning(BaseComponent):
         ht = HoverTool(
             tooltips=[
                 ( 'rdate',   '@running_date{%m/%d %Y %H:%M:%S}'),
-                ( 'duration',  '@total_duration{%0.2f}' ), # use @{ } for field names with spaces
-            
-                
+                ( 'duration',  '@total_duration{%0.2f}' ), # use @{ } for field names with spaces                
             ],
-
             formatters={
                 '@running_date'        : 'datetime', # use 'datetime' formatter for '@date' field
                 '@{total_duration}'   : 'printf',   # use 'printf' formatter for '@{adj close}' field
@@ -51,15 +57,10 @@ class HistoryRunning(BaseComponent):
                     x_axis_type="datetime",
                     sizing_mode="stretch_width",
                     max_width=1200,
-                    tools ="wheel_zoom,box_select,reset, pan",
-                    
-                     toolbar_location=None, background_fill_color="#efefef"
+                    tools ="wheel_zoom,box_select,reset, pan",                    
+                    toolbar_location=None, background_fill_color="#efefef"
                 )
 
-        cdfc = CDFComponent(metadata= metadata, selected_range= selected_range)
-        self.allcdfc = cdfc.get_layouts()
-        # self.allcdfc = figure()
- 
         # source.
         self.f.circle('running_date', 'total_duration', source=source)
         self.f.line('running_date', 'total_duration', source=source)
@@ -78,6 +79,7 @@ class HistoryRunning(BaseComponent):
         self.f.add_tools(range_tool)
         self.f.add_tools(ht)
         self.f.toolbar.active_multi = range_tool
+
     
     def _parse_metadata(self, metadata: LogDataframe) -> pd.DataFrame:
         source = pd.DataFrame({
@@ -100,5 +102,5 @@ class HistoryRunning(BaseComponent):
         return source
 
     def get_layouts(self):
-        return column(self.f, self.allcdfc)
+        return column(self.f)
 

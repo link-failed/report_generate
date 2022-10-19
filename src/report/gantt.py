@@ -27,9 +27,7 @@ class GanttComponent(BaseComponent):
         data = self._get_gantt_data(content)
         self.source= ColumnDataSource(data = data)
         self._plot_gantt(source= self.source, color = color)
-        # self.f.legend.location = 'top_center'
-        # self.f.legend.orientation = "horizontal"
-        # self.f.legend.click_policy = 'hide'
+       
 
     def _plot_gantt(self, source, color):
         self.f.hbar(y="thread_name", left='start_time', right='end_time', height=0.4, source=source, fill_color = color, line_color="white")
