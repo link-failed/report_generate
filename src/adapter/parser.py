@@ -4,14 +4,13 @@ import logging
 import re
 from datetime import datetime
 import json
-import matplotlib.pyplot as plt
-from matplotlib.patches import Patch
-import pandas as pd
-import csv
+# import matplotlib.pyplot as plt
+# from matplotlib.patches import Patch
+# import pandas as pd
+# import csv
 from palettable.cartocolors.sequential import agSunset_7, TealGrn_7
 from palettable.lightbartlein.diverging import BlueGray_8, BrownBlue10_10
 
-import pandas as pd
 from pendulum import duration
 from src.base.dataframe import LogDataframe
 
@@ -152,6 +151,7 @@ class DbtJsonLogAdapter(BaseAdapter):
         EXT = '.log'
         logs = []
         for fn in glob.glob(os.path.join(log_path, '*%s' % EXT)):
+            print("aaaa")
             if not os.path.isfile(fn):
                 logging.debug('Skipping file %s' % fn)
                 continue
@@ -169,31 +169,35 @@ class DbtJsonLogAdapter(BaseAdapter):
                         self._parse_debug_line(line=line)
 
     def _parse_info_line(self, line):
-        match = self.re_exp_project_start_time.search(line)
-        if match:
-            project_start_time = match.group(1)
-            self.running_id = match.group(2)
-            self.periods[project_start_time] = self.running_id
-            self.metadatas[self.running_id] = {}
-
-            self.df.insert_running_date(project_start_time, self.running_id)
+        json_data = json.loads(line)
+        if "invocation_id" in json_data:
+            self.running_id = json_data["invocation_id"]
+            if "data" in json_data and "index" in json_data["data"]:
+                qindex = int(json_data["data"]["index"])
+                query_name = re.search(self.query_name_rule, line).group(1)
+                total_query = re.search(self.total_query_rule, line)
+                if total_query is not None:
+                    total_query = total_query.group(1)
+                    data = dict(
+                        qindex=qindex,
+                        total=total_query
+                    )
+                    self.df.insert(self.running_id, query_name, **data)
 
     def _parse_debug_line(self, line):
         json_data = json.loads(line)
-        msg_str = json_data["msg"]
-        total_query = re.search(self.total_query_rule, msg_str)
+        self.running_id = re.search(self.running_id_rule, line).group(1)
 
-        json_record = json.loads(line)
-        execution_time = re.search(self.duration_rule, line)
+        query_duration = re.search(self.duration_rule, line)
         query_name = re.search(self.query_name_rule, line)
         query_index = re.search(self.query_index_rule, line)
-        running_id = re.search(self.running_id_rule, line)
         thread_name = re.search(self.thread_name_rule, line)
         rows_effect = re.search(self.rows_affected_rule, line)
-        if execution_time != "" and execution_time != "0":
+
+        if query_duration is not None and query_duration != "" and query_duration != "0":
             metadata = self.metadatas.get(self.running_id)
-            if "data" in json_record:
-                json_data = json_record["data"]
+            if "data" in json_data:
+                json_data = json_data["data"]
 
             rule = r'"node_info": {(.*?)},'
             if re.search(rule, line) is not None:
@@ -201,12 +205,11 @@ class DbtJsonLogAdapter(BaseAdapter):
                 query_start_time = re.search(self.query_start_time_rule, record)
                 query_end_time = re.search(self.query_end_time_rule, record)
 
-                metadata.get(query_name)['duration'] = float(duration)
+                metadata.get(query_name)['duration'] = float(query_duration.group(1))
                 metadata.get(query_name)['query_end_time'] = query_end_time
                 metadata.get(query_name)['thread_name'] = int(thread_name[7:0])
                 metadata.get(query_name)['rows_effect'] = rows_effect
-                metadata[query_name] = {'query_start_time': query_start_time, 'total_query': total_query,
-                                        'query_index': query_index, 'query_name': query_name}
+                metadata[query_name] = {'query_start_time': query_start_time, 'query_index': query_index, 'query_name': query_name}
 
                 data = dict(
                     duration=float(duration),
@@ -216,8 +219,7 @@ class DbtJsonLogAdapter(BaseAdapter):
                 )
 
                 self.df.insert(self.running_id, query_name, **data)
-
-        match = self.re_exp_query_ok.search(line)
+                print("df inserted")
 
     def get_period(self):
         return self.periods
