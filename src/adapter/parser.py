@@ -221,14 +221,15 @@ class DbtJsonLogAdapter(BaseAdapter):
                     print("query start line df inserted")
                 except Exception as e:
                     print("\n" + repr(e))
-                    # print(self.running_id)
-                    # print(query_name)
-                    # print(query_start_time)
 
     def _parse_query_end_line(self, line):
         query_duration = re.search(self.duration_rule, line)
         thread_name = re.search(self.thread_name_rule, line).group(1)
         rows_effect = re.search(self.rows_affected_rule, line)
+        if rows_effect is not None:
+            rows_effect = int(rows_effect.group(1))
+        else:
+            rows_effect = -1
 
         if query_duration is not None and query_duration != "" and query_duration != "0":
             metadata = self.metadatas.get(self.running_id)
@@ -242,7 +243,7 @@ class DbtJsonLogAdapter(BaseAdapter):
                     metadata.get(query_name)['duration'] = float(query_duration.group(1))
                     metadata.get(query_name)['query_end_time'] = query_end_time
                     metadata.get(query_name)['thread_name'] = thread_name.replace("\"", "")
-                    metadata.get(query_name)['rows_effect'] = int(rows_effect.group(1))
+                    metadata.get(query_name)['rows_effect'] = rows_effect
                 except Exception as e:
                     print("\n" + repr(e) + "  " + query_name)
 
@@ -250,7 +251,7 @@ class DbtJsonLogAdapter(BaseAdapter):
                     duration=float(query_duration.group(1)),
                     end_time=query_end_time,
                     thread_name=thread_name.replace("\"", ""),
-                    rows_effect=int(rows_effect.group(1))
+                    rows_effect=rows_effect
                 )
                 # print(self.running_id)
                 # print(query_name)
@@ -258,8 +259,12 @@ class DbtJsonLogAdapter(BaseAdapter):
                 # print(thread_name.replace("\"", ""))
                 # print(int(rows_effect.group(1)))
 
-                self.df.insert(self.running_id, query_name, **data)
-                print("query end line df inserted")
+                try:
+                    self.df.insert(self.running_id, query_name, **data)
+                    print("query end line df inserted: [" + query_name + "]")
+                except Exception as e:
+                    # print(self.df.get_contents(self.running_id))
+                    print(repr(e) + "\n")
 
     def get_period(self):
         return self.periods
