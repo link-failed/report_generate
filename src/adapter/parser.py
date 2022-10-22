@@ -1,18 +1,20 @@
-from abc import ABC, abstractmethod
-import glob, os
-import logging
-import re
-from datetime import datetime
+import glob
 import json
+import logging
+import os
+import re
+from abc import ABC, abstractmethod
+from datetime import datetime
+
+from src.base.dataframe import LogDataframe
+
+
 # import matplotlib.pyplot as plt
 # from matplotlib.patches import Patch
 # import pandas as pd
 # import csv
 # from palettable.cartocolors.sequential import agSunset_7, TealGrn_7
 # from palettable.lightbartlein.diverging import BlueGray_8, BrownBlue10_10
-
-from pendulum import duration
-from src.base.dataframe import LogDataframe
 
 
 class BaseAdapter(ABC):
@@ -220,7 +222,7 @@ class DbtJsonLogAdapter(BaseAdapter):
                     self.df.insert(self.running_id, query_name, **data)
                     print("query start line df inserted")
                 except Exception as e:
-                    print("\n" + repr(e))
+                    print(repr(e) + "\n")
 
     def _parse_query_end_line(self, line):
         query_duration = re.search(self.duration_rule, line)
