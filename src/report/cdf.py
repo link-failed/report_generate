@@ -22,27 +22,29 @@ class CDFComponent(BaseComponent):
         self.metadata = metadata
         self.data_source = {}
 
-        tools ="pan,wheel_zoom,box_select,reset, hover"
+        tools ="pan,wheel_zoom,box_select,reset, hover, box_zoom"
         tooltips = "@name: @duration"
         self.cdf_all_query = figure(
                 width=int(width), height=int(height), 
                 title = 'cdf for all running histroies',
                 tools= tools, 
                 tooltips = "@name: @wait",
-                active_drag="box_select",
-                toolbar_location=None,
+                active_drag="box_zoom",
+                toolbar_location='right',
                 background_fill_color="#fafafa"
             )
+        
         self.cdf_each_query = figure(
                 width=int(width), height=int(height), 
                 title = 'cdf for each query',
                 tools= tools,                 
                 tooltips = tooltips,
                 active_drag="box_select",
-                toolbar_location=None,
+                toolbar_location='right',
                 background_fill_color="#fafafa"
             )
-            
+        self.cdf_all_query.toolbar.autohide = True
+        self.cdf_each_query.toolbar.autohide = True
         self.select_range = selected_range
     
         self.color_mapper = self._get_categorical_palette(factors= list( metadata.histories.keys()))
@@ -106,8 +108,8 @@ class CDFComponent(BaseComponent):
         # if attrname == 'end':
         #     end = datetime.utcfromtimestamp(new / 1000.0) if not isinstance(new, datetime) else new
             
-        start = datetime.utcfromtimestamp(self.select_range.start / 1000.0) if isinstance(self.select_range.start, float) else self.select_range.start
-        end = datetime.utcfromtimestamp(self.select_range.end / 1000.0) if isinstance(self.select_range.end, float) else self.select_range.end 
+        start = datetime.utcfromtimestamp(self.select_range.start / 1000.0) if not isinstance(self.select_range.start, datetime) else self.select_range.start
+        end = datetime.utcfromtimestamp(self.select_range.end / 1000.0) if not isinstance(self.select_range.end, datetime) else self.select_range.end 
 
         rid_list = self._get_target_running_id(start, end)
         self._update_figure2(rid_list)
