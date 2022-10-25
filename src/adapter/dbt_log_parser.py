@@ -223,8 +223,9 @@ class DbtJsonLogAdapter(BaseAdapter):
         for logfile in logfiles:
             with open(logfile) as f:
                 for line in f:
+                    # json.
+                    # json_data = ast.literal_eval(line)
                     json_data = json.loads(line)
-                    
                     # self.df.get_contents(logunit.invocation_id)
                     self._parse_log_line(logunit= json_data)
 

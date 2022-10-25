@@ -21,7 +21,7 @@ class GanttComponent(BaseComponent):
         self.running_id = running_id
         self.__metadata = content
         self.data_source = {}
-        factors = content['thread_name'].unique()
+        factors = list(content['thread_name'].unique())
         self.f = self.init(y_range = factors, x_range= None, width= width, height= height)
         color = factor_cmap('name', Turbo256, content['name'].unique())
         data = self._get_gantt_data(content)

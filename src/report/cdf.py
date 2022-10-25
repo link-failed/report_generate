@@ -140,8 +140,9 @@ class CDFComponent(BaseComponent):
         ### compute cdf for all queries
         all_df = md.copy()
         base_start_time = all_df[all_df['qindex'] == 1]['start_time']
-        project_start_time = base_start_time[base_start_time.first_valid_index()]
+        
         if len(base_start_time) > 0:
+            project_start_time = base_start_time[base_start_time.first_valid_index()]
             all_df['start_time'] = pd.to_datetime(all_df['start_time'])
             sssl = [project_start_time for i in range(len(all_df))]
             base_series = pd.Series(sssl, copy= False)
@@ -161,7 +162,7 @@ class CDFComponent(BaseComponent):
         f.line(x, 'y', source = source, legend_label = label, line_width=2, line_color = color, name = rid)
         f.circle(x, 'y', source = source, fill_color= color, line_color = color, legend_label = label, name = rid)
        
-        f.legend.location = 'top_right'
+        f.legend.location = 'bottom_right'
         # f.legend.orientation = "horizontal"
         f.legend.click_policy = 'hide'
 
