@@ -22,7 +22,7 @@ class ScatterComponent(BaseComponent):
         self.metadata = metadata
         self.data_source = {}
 
-        tools ="pan,wheel_zoom,box_select,reset, hover"
+        tools ="pan,wheel_zoom,box_select,reset, box_zoom"
         tooltips = "@name: @duration"
         self.f = figure(
                 x_range = [],
@@ -30,7 +30,8 @@ class ScatterComponent(BaseComponent):
                 title = 'scatter for all running histroies',
                 tools= tools, 
                 tooltips = "@name: @duration",
-                toolbar_location=None,
+                active_drag="box_zoom",
+                toolbar_location='right',
                 background_fill_color="#fafafa"
             )       
 
@@ -92,7 +93,8 @@ class ScatterComponent(BaseComponent):
     def _plot_circle(self, rid, f: figure, source:ColumnDataSource, label, color, x = 'name'):
         factors = list(self.metadata.get_contents(rid)['name'])
         f.x_range = FactorRange(factors=factors)       
-        f.circle(x, 'duration', source = source, fill_color= color, line_color = color, legend_label = label, name = rid)
+        f.circle(x, 'duration', source = source, fill_color= color, line_color = color, legend_label = label, name = rid, size=8, alpha=0.8)
+        
         f.legend.location = 'top_right'
         # f.legend.orientation = "horizontal"
         f.legend.click_policy = 'hide'
