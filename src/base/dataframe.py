@@ -35,10 +35,11 @@ class LogDataframe():
             if d == run_date:
                 return running_id
         return None
+
     def get_running_time(self, running_id) -> str:
         rdate = self.histories.get(running_id)
         return rdate #datetime.strftime(self.histories[running_id], '%Y-%m-%d %H:%M:%S') if running_id in self.histories else None
-        
+
     def get_contents(self, running_id):
         if running_id not in self.contents:
             # self.contents[running_id] = pd.DataFrame(columns= ['name', 'start_time', 'end_time', 'duration', 'thread_name', 'qindex', 'total', 'rows_effect'])
@@ -54,13 +55,17 @@ class LogDataframe():
                 'rows_effect': pd.Series(dtype= 'int')
             })
         return self.contents[running_id]
+
     def insert_running_date(self, run_date, running_id):
         self.histories[running_id] = run_date
-        
+
     def insert(self, running_id, name, **args):
         df:pd.DataFrame = self.get_contents(running_id= running_id)
+        # print(df)
+
         if name in df['name'].values:
-            idx = df.index[df['name'] == name] 
+            idx = df.index[df['name'] == name]
+            idx = idx[0]
             for col, val in args.items():
                 if col == 'name':
                     continue
@@ -71,6 +76,7 @@ class LogDataframe():
                 **args
             )
             df = df.append(data, ignore_index = True)
+            # df['qindex'] = df['qindex'].astype('int')
             self.contents[running_id] = df
 
 if __name__ == '__main__':
