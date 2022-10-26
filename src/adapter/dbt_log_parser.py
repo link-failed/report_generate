@@ -221,7 +221,7 @@ class DbtJsonLogAdapter(BaseAdapter):
     
     def _parse_log_file(self, logfiles):
         for logfile in logfiles:
-            with open(logfile) as f:
+            with open(logfile, "r") as f:
                 for line in f:
                     # json.
                     # json_data = ast.literal_eval(line)
