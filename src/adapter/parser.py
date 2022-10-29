@@ -189,12 +189,14 @@ class DbtJsonLogAdapter(BaseAdapter):
         if "invocation_id" in json_data:
             self.running_id = json_data["invocation_id"]
             project_start_time = json_data["ts"]
+            # project_start_time = datetime.strptime(project_start_time, "%Y-%m-%dT%H:%M:%S.%fZ")
+
             self.periods[project_start_time] = self.running_id
 
             self.metadatas.contents[self.running_id] = {}
             self.df.insert_running_date(project_start_time, self.running_id)
 
-            print("project id inserted")
+            print("project id inserted; " + str(project_start_time) + "; " + self.running_id)
 
     def _parse_query_start_line(self, line):
         json_data = json.loads(line)
@@ -220,7 +222,7 @@ class DbtJsonLogAdapter(BaseAdapter):
                 )
                 try:
                     self.df.insert(self.running_id, query_name, **data)
-                    print("query start line df inserted")
+                    # print("query start line df inserted")
                 except Exception as e:
                     print(repr(e) + "\n")
 
@@ -263,7 +265,7 @@ class DbtJsonLogAdapter(BaseAdapter):
 
                 try:
                     self.df.insert(self.running_id, query_name, **data)
-                    print("query end line df inserted: [" + query_name + "]")
+                    # print("query end line df inserted: [" + query_name + "]")
                 except Exception as e:
                     # print(self.df.get_contents(self.running_id))
                     print(repr(e) + "\n")

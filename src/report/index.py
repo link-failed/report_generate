@@ -43,7 +43,7 @@ class Report(BaseComponent):
 
             md = self.metadata.get_contents(unique_id)
 
-            self.gantt = GanttComponent(unique_id, md)
+            self.gantt = GanttComponent(unique_id, metadata)
 
             self.scatter = ScatterComponent(metadata= metadata, selected_range= self.rng)
 

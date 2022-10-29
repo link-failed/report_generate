@@ -16,13 +16,17 @@ from bokeh.palettes import Turbo256
 
 
 class GanttComponent(BaseComponent):
-    def __init__(self, running_id: str, content: pd.DataFrame, height=480, width=800) -> None:
+    def __init__(self, running_id: str, metadata: pd.DataFrame, height=480, width=800) -> None:
         super().__init__()
+        content = metadata.get_contents(running_id=running_id)
         self.running_id = running_id
-        self.__metadata = content
+        self.__metadata = metadata
         self.data_source = {}
         factors = list(content['thread_name'].unique())
-        self.f = self.init(y_range=factors, x_range=None, width=width, height=height)
+        durations = list(content['duration'])
+        factors = pd.Series(factors)
+        durations = pd.Series(durations)
+        self.f = self.init(y_range=factors, x_range=durations, width=width, height=height)
         color = factor_cmap('name', Turbo256, content['name'].unique())
         data = self._get_gantt_data(content)
         self.source = ColumnDataSource(data=data)
@@ -59,7 +63,7 @@ class GanttComponent(BaseComponent):
     def init(self, y_range, x_range, width, height):
         gantt = figure(y_range=y_range, x_range=x_range, width=int(width), height=int(height),
                        tools="pan,wheel_zoom,box_select,reset, hover", tooltips="@name: @duration",
-                       x_axis_type="datetime",
+                       # x_axis_type="datetime",
                        sizing_mode="stretch_width",
                        toolbar_location=None, title="Gantt Chart")
         # gantt.legend.location = 'top_left'

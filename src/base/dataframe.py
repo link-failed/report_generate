@@ -27,10 +27,10 @@ class LogDataframe():
 
     def get_running_id(self, run_date) -> str:
         if isinstance(run_date, datetime):
-            print(run_date)
-            print("%%%run_date")
             run_date = datetime.strftime(run_date, '%Y-%m-%d %H:%M:%S')
         for running_id, d in self.histories.items():
+            d = datetime.strptime(d, "%Y-%m-%dT%H:%M:%S.%fZ")
+            d = datetime.strftime(d, "%Y-%m-%d %H:%M:%S")
             # print(f'rdate in md is {d}  --- {type(d)} === {type(run_date)}')
             if d == run_date:
                 return running_id
