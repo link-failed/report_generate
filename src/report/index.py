@@ -20,30 +20,33 @@ from .scatter import ScatterComponent
 from .cdf import CDFComponent
 
 class Report(BaseComponent):
-    def __init__(self, metadata: LogDataframe, span: int = 2, **args) -> None:
+    def __init__(self, metadata: dict, span: int = 2, **args) -> None:
         self.metadata = metadata
-
         self.span = span if len(self.metadata.histories) > span else len(self.metadata.histories)
 
         run_span = []
         for running_id, running_date in self.metadata.histories.items():
-            run_span.append(datetime.strptime(running_date, "%Y-%m-%d %H:%M:%S"))
+            # run_span.append(datetime.strptime(running_date, "%Y-%m-%d %H:%M:%S"))
+            run_span.append(datetime.strptime(running_date, "%Y-%m-%dT%H:%M:%S.%fZ"))
+
         run_span.sort()
-        unique_id = self.metadata.get_running_id(run_span[-1])
 
-        self.rng = Range1d(start = run_span[0 - self.span], end = run_span[-1])     
-        self.range_slider = HistoryRunning(metadata= metadata, selected_range= self.rng).get_layouts()       
+        if len(run_span) > 0:
+            unique_id = self.metadata.get_running_id(run_span[-1])
 
-        self.allcdfc = CDFComponent(metadata= metadata, selected_range= self.rng)
+            self.rng = Range1d(start = run_span[0 - self.span], end = run_span[-1])
+            self.range_slider = HistoryRunning(metadata= metadata, selected_range= self.rng).get_layouts()
 
-        self._plot_select(unique_id, self.metadata.histories)
+            self.allcdfc = CDFComponent(metadata= metadata, selected_range= self.rng)
 
-        md = self.metadata.get_contents(unique_id)
+            self._plot_select(unique_id, self.metadata.histories)
 
-        self.gantt = GanttComponent(unique_id, md)
-        
-        self.scatter = ScatterComponent(metadata= metadata, selected_range= self.rng)
-        
+            md = self.metadata.get_contents(unique_id)
+
+            self.gantt = GanttComponent(unique_id, metadata)
+
+            self.scatter = ScatterComponent(metadata= metadata, selected_range= self.rng)
+
     def get_layouts(self):
         return super().get_layouts()
 

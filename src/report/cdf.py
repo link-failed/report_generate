@@ -63,7 +63,8 @@ class CDFComponent(BaseComponent):
     def _get_target_running_id(self, start, end):
         rid_list = []  ### lines should be plotted
         for running_id, running_date in self.metadata.histories.items():
-            r_date = datetime.strptime(running_date, "%Y-%m-%d %H:%M:%S")
+            # r_date = datetime.strptime(running_date, "%Y-%m-%dT%H:%M:%S.%fZ")
+            r_date = datetime.strptime(running_date, "%Y-%m-%dT%H:%M:%S.%fZ")
             if r_date >= start and r_date <= end:
                 rid_list.append(running_id)
                 if running_id not in self.data_source:                

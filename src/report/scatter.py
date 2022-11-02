@@ -56,7 +56,8 @@ class ScatterComponent(BaseComponent):
         rid_list = []  ### lines should be plotted
         rm_rids= []
         for running_id, running_date in self.metadata.histories.items():
-            r_date = datetime.strptime(running_date, "%Y-%m-%d %H:%M:%S")
+            # r_date = datetime.strptime(running_date, "%Y-%m-%d %H:%M:%S")
+            r_date = datetime.strptime(running_date, "%Y-%m-%dT%H:%M:%S.%fZ")
             if r_date >= start and r_date <= end:
                 if running_id not in self.data_source:                
                     self.data_source[running_id] = ColumnDataSource(data = self.metadata.get_contents(running_id = running_id))
