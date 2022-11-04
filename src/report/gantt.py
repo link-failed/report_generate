@@ -22,10 +22,8 @@ class GanttComponent(BaseComponent):
         self.running_id = running_id
         self.__metadata = metadata
         self.data_source = {}
-        factors = list(content['thread_name'].unique())
-        durations = list(content['duration'])
-        factors = pd.Series(factors)
-        durations = pd.Series(durations)
+        factors = list(content['name'].unique())
+        durations = content[['name', 'duration']].groupby('name')
         self.f = self.init(y_range=factors, x_range=durations, width=width, height=height)
         color = factor_cmap('name', Turbo256, content['name'].unique())
         data = self._get_gantt_data(content)
@@ -61,6 +59,8 @@ class GanttComponent(BaseComponent):
         return md
 
     def init(self, y_range, x_range, width, height):
+        # print(type(x_range))
+        # print(x_range)
         gantt = figure(y_range=y_range, x_range=x_range, width=int(width), height=int(height),
                        tools="pan,wheel_zoom,box_select,reset, hover", tooltips="@name: @duration",
                        # x_axis_type="datetime",
