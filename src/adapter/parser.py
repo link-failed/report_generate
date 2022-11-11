@@ -2,6 +2,7 @@ import glob
 import json
 import logging
 import os
+import math
 import re
 from abc import ABC, abstractmethod
 from datetime import datetime
@@ -166,7 +167,8 @@ class DbtJsonLogAdapter(BaseAdapter):
                     if "Running with dbt=" in line:
                         self._parse_project_start_line(line=line)
                         # print("project start line")
-                    elif "START table model" in line:
+                    # elif "START table model" in line:
+                    elif "\"description\"" in line and "\"description\": \"\"," not in line:
                         self._parse_query_start_line(line=line)
                         # print("query start line")
                     elif "Finished running node" in line:

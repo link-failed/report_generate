@@ -45,10 +45,20 @@ class GanttComponent(BaseComponent):
         # print('sssdasdsasdasdad' * 100)
 
     def _get_gantt_data(self, md: pd.DataFrame):
+        with pd.option_context('display.max_rows', None, 'display.max_columns',
+                               None):  # more options can be specified also
+            print(md)
+        print("fff")
         md = md.copy()
         # assert md.empty is True
         md.thread_name = md.thread_name.astype(str)
         md.qindex = md.qindex.astype(int)
+        # try:
+        #     md.qindex = md.qindex.astype(int)
+        # except Exception as r:
+        #     print("exception: " + str(r))
+        #     print(md.qindex.to_string())
+
         md['end_time'] = md['end_time'].astype('datetime64[ns]')
         # group = md.groupby('thread_name')
         start = md[md['qindex'] == md['qindex'].min()]['start_time']
@@ -59,8 +69,11 @@ class GanttComponent(BaseComponent):
         return md
 
     def init(self, y_range, x_range, width, height):
-        # print(type(x_range))
-        # print(x_range)
+        print("tttest1")
+        print(type(x_range))
+        print(x_range)
+        print(type(y_range))
+        print(y_range)
         gantt = figure(y_range=y_range, x_range=x_range, width=int(width), height=int(height),
                        tools="pan,wheel_zoom,box_select,reset, hover", tooltips="@name: @duration",
                        # x_axis_type="datetime",
