@@ -18,7 +18,7 @@ from bokeh.palettes import Turbo256
 class GanttComponent(BaseComponent):
     def __init__(self, running_id: str, metadata: pd.DataFrame, height=480, width=800) -> None:
         super().__init__()
-        content = metadata.get_contents(running_id=running_id)
+        content = metadata.get_contents_by_id(running_id=running_id)
         self.running_id = running_id
         self.__metadata = metadata
         self.data_source = {}
@@ -45,10 +45,10 @@ class GanttComponent(BaseComponent):
         # print('sssdasdsasdasdad' * 100)
 
     def _get_gantt_data(self, md: pd.DataFrame):
-        with pd.option_context('display.max_rows', None, 'display.max_columns',
-                               None):  # more options can be specified also
-            print(md)
-        print("fff")
+        # with pd.option_context('display.max_rows', None, 'display.max_columns',
+        #                        None):  # more options can be specified also
+        #     print(md)
+        # print("fff")
         md = md.copy()
         # assert md.empty is True
         md.thread_name = md.thread_name.astype(str)
@@ -76,7 +76,7 @@ class GanttComponent(BaseComponent):
         print(y_range)
         gantt = figure(y_range=y_range, x_range=x_range, width=int(width), height=int(height),
                        tools="pan,wheel_zoom,box_select,reset, hover", tooltips="@name: @duration",
-                       # x_axis_type="datetime",
+                       x_axis_type="datetime",
                        sizing_mode="stretch_width",
                        toolbar_location=None, title="Gantt Chart")
         # gantt.legend.location = 'top_left'
@@ -87,6 +87,7 @@ class GanttComponent(BaseComponent):
                                                       months="%m/%d %H:%M",
                                                       hours="%m/%d %H:%M",
                                                       minutes="%m/%d %H:%M")
+        # ???
         return gantt
 
     def get_layouts(self):

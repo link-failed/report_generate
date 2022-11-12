@@ -60,7 +60,7 @@ class ScatterComponent(BaseComponent):
             r_date = datetime.strptime(running_date, "%Y-%m-%dT%H:%M:%S.%fZ")
             if r_date >= start and r_date <= end:
                 if running_id not in self.data_source:                
-                    self.data_source[running_id] = ColumnDataSource(data = self.metadata.get_contents(running_id = running_id))
+                    self.data_source[running_id] = ColumnDataSource(data = self.metadata.get_contents_by_id(running_id = running_id))
                     rid_list.append(running_id)
             else:
                 rm_rids.append(running_id)
@@ -92,7 +92,7 @@ class ScatterComponent(BaseComponent):
                 r.data_source.data[col] = src_dict[col]
 
     def _plot_circle(self, rid, f: figure, source:ColumnDataSource, label, color, x = 'name'):
-        factors = list(self.metadata.get_contents(rid)['name'])
+        factors = list(self.metadata.get_contents_by_id(rid)['name'])
         f.x_range = FactorRange(factors=factors)       
         f.circle(x, 'duration', source = source, fill_color= color, line_color = color, legend_label = label, name = rid, size=8, alpha=0.8)
         

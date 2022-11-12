@@ -43,7 +43,7 @@ class LogDataframe():
     def get_histories(self):
         return self.histories
 
-    def get_contents(self, running_id):
+    def get_contents_by_id(self, running_id):
         if running_id not in self.contents:
             # self.contents[running_id] = pd.DataFrame(columns= ['name', 'start_time', 'end_time', 'duration', 'thread_name', 'qindex', 'total', 'rows_effect'])
             self.contents[running_id] = pd.DataFrame({
@@ -59,11 +59,17 @@ class LogDataframe():
             })
         return self.contents[running_id]
 
+    def get_contents(self):
+        for running_id in list(self.contents):
+            if len(self.contents[running_id]) == 0:
+                del self.contents[running_id]
+        return self.contents
+
     def insert_running_date(self, run_date, running_id):
         self.histories[running_id] = run_date
 
     def insert(self, running_id, name, **args):
-        df: pd.DataFrame = self.get_contents(running_id=running_id)
+        df: pd.DataFrame = self.get_contents_by_id(running_id=running_id)
 
         if name in df['name'].values:
             idx = df.index[df['name'] == name]
@@ -94,7 +100,7 @@ if __name__ == '__main__':
 
     ldf.insert('aaaaa', 'bbb', **data)
 
-    print(ldf.get_contents('aaaaa'))
+    print(ldf.get_contents_by_id('aaaaa'))
     print()
 
     d2 = dict(
@@ -104,4 +110,4 @@ if __name__ == '__main__':
     ldf.insert('aaaaa', 'agetbl', **d2)
     ldf.insert('aaaaa', 'bbb', **d2)
 
-    print(ldf.get_contents('aaaaa'))
+    print(ldf.get_contents_by_id('aaaaa'))

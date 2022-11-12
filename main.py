@@ -22,5 +22,7 @@ from bokeh.plotting import figure, curdoc
 log_path = "/home/ceci/Desktop/report_generate/create_report/temp_files/json_logs/dir1"
 dja = DbtJsonLogAdapter(log_path= log_path)
 report = Report(dja.get_df())
-print(Report(dja.get_metadata()))
+# print(Report(dja.get_metadata()))
+# print(Report(dja.get_df().contents))
+# print("ddd")
 curdoc().add_root(report.layouts())

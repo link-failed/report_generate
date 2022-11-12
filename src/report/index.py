@@ -20,14 +20,16 @@ from .scatter import ScatterComponent
 from .cdf import CDFComponent
 
 class Report(BaseComponent):
-    def __init__(self, metadata: dict, span: int = 2, **args) -> None:
+    def __init__(self, metadata: LogDataframe, span: int = 2, **args) -> None:
         self.metadata = metadata
         self.span = span if len(self.metadata.histories) > span else len(self.metadata.histories)
 
         run_span = []
         for running_id, running_date in self.metadata.histories.items():
             # run_span.append(datetime.strptime(running_date, "%Y-%m-%d %H:%M:%S"))
-            run_span.append(datetime.strptime(running_date, "%Y-%m-%dT%H:%M:%S.%fZ"))
+            # leave out invalid running_id
+            if running_id in self.metadata.get_contents().keys():
+                run_span.append(datetime.strptime(running_date, "%Y-%m-%dT%H:%M:%S.%fZ"))
 
         run_span.sort()
 
@@ -39,9 +41,12 @@ class Report(BaseComponent):
 
             self.allcdfc = CDFComponent(metadata= metadata, selected_range= self.rng)
 
+            for k in list(self.metadata.histories.keys()):
+                if k not in list(metadata.get_contents().keys()):
+                    self.metadata.histories.pop(k)
             self._plot_select(unique_id, self.metadata.histories)
 
-            md = self.metadata.get_contents(unique_id)
+            md = self.metadata.get_contents_by_id(unique_id)
 
             self.gantt = GanttComponent(unique_id, metadata)
 
@@ -71,10 +76,9 @@ class Report(BaseComponent):
 
     def selected_history_change(self, attrname, old, new):
         running_id = new
-        md: pd.DataFrame = self.metadata.get_contents(running_id= running_id).copy()
+        md: pd.DataFrame = self.metadata.get_contents_by_id(running_id= running_id).copy()
         self.gantt.running_id = running_id
         self.gantt.metadata = md
-
 
     def _plot_select(self, default, histories: Dict):
         select_list = [(k,v) for k,v in histories.items()]

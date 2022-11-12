@@ -91,7 +91,7 @@ class HistoryRunning(BaseComponent):
                 'total_duration': pd.Series(dtype= 'float')                
             })
         for running_id, running_date in metadata.histories.items():
-            df: pd.DataFrame = metadata.get_contents(running_id= running_id)
+            df: pd.DataFrame = metadata.get_contents_by_id(running_id= running_id)
             total = df['duration'].sum()
             data = dict(
                 running_id = running_id,

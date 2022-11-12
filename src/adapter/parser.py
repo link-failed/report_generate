@@ -167,7 +167,6 @@ class DbtJsonLogAdapter(BaseAdapter):
                     if "Running with dbt=" in line:
                         self._parse_project_start_line(line=line)
                         # print("project start line")
-                    # elif "START table model" in line:
                     elif "\"description\"" in line and "\"description\": \"\"," not in line:
                         self._parse_query_start_line(line=line)
                         # print("query start line")
@@ -203,7 +202,7 @@ class DbtJsonLogAdapter(BaseAdapter):
     def _parse_query_start_line(self, line):
         json_data = json.loads(line)
         if "invocation_id" in json_data:
-            metadata = self.metadatas.get_contents(self.running_id)
+            metadata = self.metadatas.get_contents_by_id(self.running_id)
             if "data" in json_data and "index" in json_data["data"]:
                 qindex = int(json_data["data"]["index"])
                 total_query = json_data["data"]["total"]
@@ -238,7 +237,7 @@ class DbtJsonLogAdapter(BaseAdapter):
             rows_effect = -1
 
         if query_duration is not None and query_duration != "" and query_duration != "0":
-            metadata = self.metadatas.get_contents(self.running_id)
+            metadata = self.metadatas.get_contents_by_id(self.running_id)
 
             rule = r'"node_info": {(.*?)},'
             if re.search(rule, line) is not None:

@@ -117,7 +117,7 @@ class CDFComponent(BaseComponent):
 
 
     def _get_cdf_data(self, rid, empty = False):
-        md: pd.DataFrame = self.metadata.get_contents(rid)
+        md: pd.DataFrame = self.metadata.get_contents_by_id(rid)
 
         data = dict(
             each = ColumnDataSource(data= dict(duration = [], y = [])),
